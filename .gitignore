@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+.DS_Store
+*.log
+data/raw/search-cache/
+data/run-logs/private/
+site/.vercel/

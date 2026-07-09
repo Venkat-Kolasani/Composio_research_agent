@@ -1,0 +1,26 @@
+{
+  "name": "composio-research-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-assisted connector research agent and case study for the Composio Product Ops take-home assignment.",
+  "scripts": {
+    "parse": "tsx src/parseAssignment.ts",
+    "research": "tsx src/research.ts",
+    "verify": "tsx src/verify.ts",
+    "build:site": "tsx src/buildSite.ts",
+    "proof:mcp": "tsx src/proofMcp.ts",
+    "check": "tsc --noEmit",
+    "all": "npm run parse && npm run research && npm run verify && npm run build:site"
+  },
+  "dependencies": {
+    "@ai-sdk/mcp": "^1.0.0",
+    "@composio/core": "^0.5.48",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10"
+  }
+}
