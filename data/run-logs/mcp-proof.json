@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-07-09T08:17:09.691Z",
+  "status": "skipped_no_api_key",
+  "docs": [
+    "https://docs.composio.dev/docs/sessions-via-mcp",
+    "https://docs.composio.dev/docs/extending-sessions/custom-tools-and-toolkits",
+    "https://docs.composio.dev/toolkits",
+    "https://docs.composio.dev/docs/cli"
+  ],
+  "note": "COMPOSIO_API_KEY was not configured. The script is still checked in so reviewers can run the hosted MCP proof without code changes."
+}

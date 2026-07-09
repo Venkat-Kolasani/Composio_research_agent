@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-07-09T08:16:58.110Z",
+  "mode": "seeded_research_with_composio_ready_tool_manifest",
+  "agentTools": [
+    {
+      "name": "FIND_OFFICIAL_DOCS",
+      "purpose": "Locate official API, auth, MCP, and developer-portal URLs before considering secondary sources.",
+      "inputShape": "{ app, hint }",
+      "outputShape": "{ evidenceUrls, evidenceQuality }"
+    },
+    {
+      "name": "LOOKUP_COMPOSIO_TOOLKIT",
+      "purpose": "Check whether Composio already has a matching or adjacent toolkit opportunity.",
+      "inputShape": "{ app }",
+      "outputShape": "{ status, toolkitSlug?, note }"
+    },
+    {
+      "name": "CLASSIFY_CONNECTOR",
+      "purpose": "Convert evidence into auth, access, API surface, buildability, confidence, and blocker labels.",
+      "inputShape": "{ app, category, evidenceUrls, notes }",
+      "outputShape": "AppResearch"
+    },
+    {
+      "name": "VERIFY_EVIDENCE",
+      "purpose": "Challenge weak claims, missing docs, unsupported ready-now verdicts, and gated app assumptions.",
+      "inputShape": "AppResearch",
+      "outputShape": "{ verified, flags[] }"
+    }
+  ],
+  "rowCount": 100,
+  "lowConfidence": [
+    "Pumble",
+    "fanbasis",
+    "Waterfall.io",
+    "Paygent Connect",
+    "iPayX",
+    "Fathom",
+    "Consensus",
+    "higgsfield",
+    "Grain"
+  ],
+  "note": "This deterministic run mirrors the intended agent contract. Add search/LLM keys to replace or refresh seeded evidence before production use."
+}

@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2026-07-09T08:18:41.447Z",
+  "totalApps": 100,
+  "byBuildability": {
+    "ready_now": 57,
+    "ready_with_limits": 31,
+    "needs_outreach": 10,
+    "not_buildable_today": 2
+  },
+  "byCredentialAccess": {
+    "self_serve": 63,
+    "paid_or_admin_gated": 24,
+    "partner_or_sales_gated": 10,
+    "unclear": 3
+  },
+  "byApiSurface": {
+    "broad_public_api": 73,
+    "limited_public_api": 18,
+    "private_or_no_public_api": 5,
+    "mcp_available": 4
+  },
+  "byCategoryMatrix": {
+    "CRM and Sales": {
+      "ready_now": 6,
+      "ready_with_limits": 3,
+      "needs_outreach": 1,
+      "not_buildable_today": 0
+    },
+    "Support and Helpdesk": {
+      "ready_now": 7,
+      "ready_with_limits": 2,
+      "needs_outreach": 1,
+      "not_buildable_today": 0
+    },
+    "Communications and Messaging": {
+      "ready_now": 6,
+      "ready_with_limits": 4,
+      "needs_outreach": 0,
+      "not_buildable_today": 0
+    },
+    "Marketing, Ads, Email and Social": {
+      "ready_now": 4,
+      "ready_with_limits": 4,
+      "needs_outreach": 2,
+      "not_buildable_today": 0
+    },
+    "Ecommerce": {
+      "ready_now": 5,
+      "ready_with_limits": 3,
+      "needs_outreach": 1,
+      "not_buildable_today": 1
+    },
+    "Data, SEO and Scraping": {
+      "ready_now": 4,
+      "ready_with_limits": 5,
+      "needs_outreach": 1,
+      "not_buildable_today": 0
+    },
+    "Developer, Infra and Data platforms": {
+      "ready_now": 8,
+      "ready_with_limits": 2,
+      "needs_outreach": 0,
+      "not_buildable_today": 0
+    },
+    "Productivity and Project Management": {
+      "ready_now": 10,
+      "ready_with_limits": 0,
+      "needs_outreach": 0,
+      "not_buildable_today": 0
+    },
+    "Finance and Fintech": {
+      "ready_now": 4,
+      "ready_with_limits": 4,
+      "needs_outreach": 2,
+      "not_buildable_today": 0
+    },
+    "AI, Research and Media-native": {
+      "ready_now": 3,
+      "ready_with_limits": 4,
+      "needs_outreach": 2,
+      "not_buildable_today": 1
+    }
+  },
+  "topBlockers": [
+    {
+      "blocker": "Schema or safety complexity",
+      "count": 27
+    },
+    {
+      "blocker": "Paid/admin account gate",
+      "count": 22
+    },
+    {
+      "blocker": "Implementation mapping",
+      "count": 21
+    },
+    {
+      "blocker": "App review or approval",
+      "count": 18
+    },
+    {
+      "blocker": "Partner or sales gate",
+      "count": 6
+    },
+    {
+      "blocker": "Usage cost or rate limits",
+      "count": 4
+    },
+    {
+      "blocker": "No clear public API",
+      "count": 2
+    }
+  ],
+  "composioCoverage": {
+    "supported": 55,
+    "partial_or_adjacent": 17,
+    "not_found": 28,
+    "unknown": 0
+  },
+  "verification": {
+    "issueCount": 22,
+    "auditedApps": 20,
+    "firstPassAccuracy": 0.7,
+    "finalAuditedAccuracy": 1
+  }
+}
