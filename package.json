@@ -8,6 +8,7 @@
     "parse": "tsx src/parseAssignment.ts",
     "research": "tsx src/research.ts",
     "verify": "tsx src/verify.ts",
+    "build": "npm run build:site",
     "build:site": "tsx src/buildSite.ts",
     "proof:mcp": "tsx src/proofMcp.ts",
     "check": "tsc --noEmit",
