@@ -39,6 +39,16 @@ npm run check       # Type-check scripts
 - `data/run-logs/mcp-proof.json`: redacted Composio MCP proof output.
 - `site/index.html`: final single-page case study.
 
+## Current Generated Results
+
+- 100 apps researched across 10 categories.
+- 57 apps classified as `ready_now`.
+- 31 apps classified as `ready_with_limits`.
+- 10 apps classified as `needs_outreach`.
+- 2 apps classified as `not_buildable_today`.
+- 20 apps in the human audit sample.
+- First-pass audited accuracy: 70%; final audited accuracy after verification/correction: 100%.
+
 ## How To Read The Results
 
 The page leads with the operational answer: which connectors are ready now, which need limited work, which require outreach, and which are not buildable today. The table keeps each claim tied to evidence. The verification section shows first-pass misses and corrected results so the accuracy story is visible rather than hand-waved.
@@ -51,3 +61,14 @@ The core project is a TypeScript research agent. It is designed to use Composio 
 - **MCP path:** `npm run proof:mcp` creates a Composio session with `mcp: true`, connects with an MCP client, lists available tools, and writes a redacted proof artifact.
 
 The scripts degrade gracefully when API keys are unavailable, which keeps the take-home reproducible for reviewers.
+
+## Deployment
+
+The project is configured for Vercel as a static deployment from the `site/` directory.
+
+```bash
+npm run all
+npx vercel --prod
+```
+
+If Vercel auth is unavailable, `site/index.html` can be hosted through GitHub Pages or any static file host without code changes.
