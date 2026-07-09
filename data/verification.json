@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T08:18:41.448Z",
+  "generatedAt": "2026-07-09T08:52:52.127Z",
   "issues": [
     {
       "app": "Twenty",
@@ -72,16 +72,6 @@
       "issue": "weak_or_marketing_only_evidence"
     },
     {
-      "app": "Fathom",
-      "severity": "medium",
-      "issue": "weak_or_marketing_only_evidence"
-    },
-    {
-      "app": "Fathom",
-      "severity": "medium",
-      "issue": "low_confidence_requires_refresh"
-    },
-    {
       "app": "Consensus",
       "severity": "medium",
       "issue": "low_confidence_requires_refresh"
@@ -105,11 +95,6 @@
       "app": "YouTube Transcript",
       "severity": "low",
       "issue": "ready_now_without_high_confidence"
-    },
-    {
-      "app": "Grain",
-      "severity": "medium",
-      "issue": "low_confidence_requires_refresh"
     }
   ],
   "auditRecords": [

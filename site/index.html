@@ -11,6 +11,7 @@
       --line: #dce4dd;
       --bg: #f7f8f4;
       --paper: #ffffff;
+      --paper-2: #fdfefb;
       --green: #1e7f5c;
       --blue: #2a62b7;
       --amber: #ae6f18;
@@ -30,14 +31,15 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     header {
-      min-height: 74vh;
+      min-height: 64vh;
       display: grid;
       align-items: end;
       padding: 56px max(24px, 6vw) 32px;
       background:
         linear-gradient(115deg, rgba(23,32,25,.94), rgba(23,32,25,.72)),
         radial-gradient(circle at 78% 22%, rgba(255,255,255,.3), transparent 22%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.1) 0 1px, transparent 1px 96px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.1) 0 1px, transparent 1px 92px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 72px),
         linear-gradient(135deg, #1e7f5c, #2a62b7 56%, #ae6f18);
       color: white;
     }
@@ -77,7 +79,7 @@
       position: relative;
       z-index: 1;
     }
-    .metric, .panel, .tool-grid article {
+    .metric, .panel, .tool-grid article, .lane, .quality-card {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -87,6 +89,26 @@
     .metric strong { display: block; font-size: 42px; line-height: 1; }
     .metric span { display: block; margin-top: 8px; font-weight: 750; }
     .metric p { color: var(--muted); margin: 8px 0 0; }
+    .lane-grid, .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .lane, .quality-card { padding: 16px; min-height: 150px; }
+    .lane strong, .quality-card strong {
+      display: block;
+      margin: 14px 0 8px;
+      font-size: 30px;
+      line-height: 1;
+    }
+    .lane p, .quality-card p { color: var(--muted); margin: 0; }
+    .quality-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
     .insights {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
@@ -126,7 +148,16 @@
       overflow: hidden;
     }
     th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    th { font-size: 12px; text-transform: uppercase; color: var(--muted); background: #f1f4ef; }
+    th {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: #f1f4ef;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tbody tr:nth-child(even) { background: var(--paper-2); }
     td small { display: block; color: var(--muted); margin-top: 4px; }
     .matrix th:first-child, .matrix td:first-child { width: 28%; }
     .matrix-count { font-weight: 800; margin-right: 8px; }
@@ -179,7 +210,23 @@
     .tool-grid article { padding: 14px; }
     .tool-grid b { display: block; margin-bottom: 6px; }
     .tool-grid span { color: var(--muted); }
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    .table-controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(180px, 260px);
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+    }
+    .table-controls input, .table-controls select {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font: inherit;
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; grid-column: 1 / -1; }
     .filters button {
       border: 1px solid var(--line);
       background: white;
@@ -205,9 +252,9 @@
     }
     footer { max-width: 1220px; margin: 34px auto 0; color: var(--muted); }
     @media (max-width: 900px) {
-      header { min-height: 66vh; padding-inline: 20px; }
+      header { min-height: 58vh; padding-inline: 20px; }
       main { padding-inline: 14px; }
-      .metrics, .insights, .split, .tool-grid { grid-template-columns: 1fr; }
+      .metrics, .insights, .split, .tool-grid, .lane-grid, .quality-grid, .table-controls { grid-template-columns: 1fr; }
       .metrics { margin-top: 0; }
       .workflow { grid-template-columns: 1fr; }
       .workflow-arrow { height: 22px; width: 2px; margin-left: 24px; }
@@ -219,13 +266,13 @@
   <header>
     <div>
       <div class="eyebrow">Composio Product Ops Take-Home</div>
-      <h1>57 of 100 apps are agent-toolkit ready today.</h1>
-      <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with deterministic checks plus a human audit sample.</p>
+      <h1>58 of 100 apps are agent-toolkit ready today.</h1>
+      <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with repeatable checks, live source checks, and a human audit sample.</p>
       <div class="hero-meta">
-        <span>34 apps gated by paid, admin, partner, or sales access</span>
+        <span>33 apps gated by paid, admin, partner, or sales access</span>
         <span>20 manually audited apps</span>
         <span>Accuracy moved from 70% to 100% on audited sample</span>
-        <span>Generated Jul 9, 2026, 1:48 PM</span>
+        <span>Generated Jul 9, 2026, 2:22 PM</span>
       </div>
     </div>
   </header>
@@ -233,7 +280,7 @@
   <main>
     <section class="metrics">
         <article class="metric">
-          <strong>57</strong>
+          <strong>58</strong>
           <span>Ready now</span>
           <p>Self-serve APIs that can become toolkits immediately.</p>
         </article>
@@ -243,7 +290,7 @@
           <p>Buildable, but gated by admin setup, app review, scope limits, or account access.</p>
         </article>
         <article class="metric">
-          <strong>10</strong>
+          <strong>9</strong>
           <span>Needs outreach</span>
           <p>API exists or likely exists, but access requires partner, sales, or approval work.</p>
         </article>
@@ -252,6 +299,34 @@
           <span>Not buildable today</span>
           <p>No useful public API path for a reliable agent toolkit.</p>
         </article></section>
+
+    <section>
+      <h2>Decision Lanes</h2>
+      
+    <div class="lane-grid">
+      
+            <article class="lane">
+              <span class="pill ready_now">Ship First</span>
+              <strong>58</strong>
+              <p>Self-serve, broad APIs. Best candidates for immediate toolkit work.</p>
+            </article>
+            <article class="lane">
+              <span class="pill ready_with_limits">Build With Guardrails</span>
+              <strong>31</strong>
+              <p>Useful APIs with app review, admin setup, limited scope, or safety constraints.</p>
+            </article>
+            <article class="lane">
+              <span class="pill needs_outreach">Partner Ops Queue</span>
+              <strong>9</strong>
+              <p>Access is the blocker. These need approvals, sales contacts, or vendor partnership motion.</p>
+            </article>
+            <article class="lane">
+              <span class="pill not_buildable_today">Defer</span>
+              <strong>2</strong>
+              <p>No reliable public API route for an agent toolkit today.</p>
+            </article>
+    </div>
+    </section>
 
     <section class="insights">
       <div>
@@ -276,7 +351,7 @@
           <th>Ready now</th><th>Ready with limits</th><th>Needs outreach</th><th>Not buildable today</th>
         </tr>
       </thead>
-      <tbody><tr><th>CRM and Sales</th><td><span class="matrix-count">6</span><span class="bar"><i style="width:60%"></i></span></td><td><span class="matrix-count">3</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Support and Helpdesk</th><td><span class="matrix-count">7</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Communications and Messaging</th><td><span class="matrix-count">6</span><span class="bar"><i style="width:60%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Marketing, Ads, Email and Social</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Ecommerce</th><td><span class="matrix-count">5</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="matrix-count">3</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td></tr><tr><th>Data, SEO and Scraping</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">5</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Developer, Infra and Data platforms</th><td><span class="matrix-count">8</span><span class="bar"><i style="width:80%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Productivity and Project Management</th><td><span class="matrix-count">10</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Finance and Fintech</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>AI, Research and Media-native</th><td><span class="matrix-count">3</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td></tr></tbody>
+      <tbody><tr><th>CRM and Sales</th><td><span class="matrix-count">6</span><span class="bar"><i style="width:60%"></i></span></td><td><span class="matrix-count">3</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Support and Helpdesk</th><td><span class="matrix-count">7</span><span class="bar"><i style="width:70%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Communications and Messaging</th><td><span class="matrix-count">6</span><span class="bar"><i style="width:60%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Marketing, Ads, Email and Social</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Ecommerce</th><td><span class="matrix-count">5</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="matrix-count">3</span><span class="bar"><i style="width:30%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td></tr><tr><th>Data, SEO and Scraping</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">5</span><span class="bar"><i style="width:50%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Developer, Infra and Data platforms</th><td><span class="matrix-count">8</span><span class="bar"><i style="width:80%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Productivity and Project Management</th><td><span class="matrix-count">10</span><span class="bar"><i style="width:100%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>Finance and Fintech</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">2</span><span class="bar"><i style="width:20%"></i></span></td><td><span class="matrix-count">0</span><span class="bar"><i style="width:0%"></i></span></td></tr><tr><th>AI, Research and Media-native</th><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">4</span><span class="bar"><i style="width:40%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td><td><span class="matrix-count">1</span><span class="bar"><i style="width:10%"></i></span></td></tr></tbody>
     </table>
     </section>
 
@@ -289,38 +364,38 @@
         <ul class="bars">
         <li>
           <span>Schema or safety complexity</span>
-          <strong>27</strong>
+          <strong>28</strong>
           <i style="width:100%"></i>
         </li>
         <li>
           <span>Paid/admin account gate</span>
           <strong>22</strong>
-          <i style="width:81%"></i>
+          <i style="width:79%"></i>
         </li>
         <li>
           <span>Implementation mapping</span>
           <strong>21</strong>
-          <i style="width:78%"></i>
+          <i style="width:75%"></i>
         </li>
         <li>
           <span>App review or approval</span>
           <strong>18</strong>
-          <i style="width:67%"></i>
+          <i style="width:64%"></i>
         </li>
         <li>
           <span>Partner or sales gate</span>
           <strong>6</strong>
-          <i style="width:22%"></i>
+          <i style="width:21%"></i>
         </li>
         <li>
           <span>Usage cost or rate limits</span>
           <strong>4</strong>
-          <i style="width:15%"></i>
+          <i style="width:14%"></i>
         </li>
         <li>
           <span>No clear public API</span>
-          <strong>2</strong>
-          <i style="width:7%"></i>
+          <strong>1</strong>
+          <i style="width:4%"></i>
         </li></ul>
       </section>
       <section class="panel">
@@ -328,7 +403,7 @@
         <ul class="bars">
         <li>
           <span>Self-serve</span>
-          <strong>63</strong>
+          <strong>64</strong>
           <i style="width:100%"></i>
         </li>
         <li>
@@ -338,8 +413,8 @@
         </li>
         <li>
           <span>Partner/sales gated</span>
-          <strong>10</strong>
-          <i style="width:16%"></i>
+          <strong>9</strong>
+          <i style="width:14%"></i>
         </li>
         <li>
           <span>Unclear</span>
@@ -347,6 +422,33 @@
           <i style="width:5%"></i>
         </li></ul>
       </section>
+    </div>
+    </section>
+
+    <section>
+      <h2>Data Quality</h2>
+      
+    <div class="quality-grid">
+      <article class="quality-card">
+        <span>Assignment Readiness</span>
+        <strong>16/16 checks passed</strong>
+        <p>Schema, required sections, table rows, and public language checks passed.</p>
+      </article>
+      <article class="quality-card">
+        <span>Evidence Health</span>
+        <strong>184/184 evidence URLs reachable or intentionally blocked</strong>
+        <p>0 hard URL failures recorded for follow-up.</p>
+      </article>
+      <article class="quality-card">
+        <span>Human Audit</span>
+        <strong>20 apps sampled</strong>
+        <p>Audit spans all 10 categories and includes ambiguous or gated vendors.</p>
+      </article>
+      <article class="quality-card">
+        <span>Open Review Queue</span>
+        <strong>19 verifier flags retained for review</strong>
+        <p>Flags are visible so low-confidence rows become ops follow-ups, not hidden assumptions.</p>
+      </article>
     </div>
     </section>
 
@@ -550,9 +652,15 @@
     <section>
       <h2>100-App Research Table</h2>
       
-    <div class="filters" aria-label="Research table filters">
-      <button data-filter="all" class="active">All</button>
-      <button data-filter="ready_now">Ready now</button><button data-filter="ready_with_limits">Ready with limits</button><button data-filter="needs_outreach">Needs outreach</button><button data-filter="not_buildable_today">Not buildable today</button>
+    <div class="table-controls">
+      <input id="table-search" type="search" placeholder="Search app, category, auth, blocker..." aria-label="Search research table">
+      <select id="category-filter" aria-label="Filter by category">
+        <option value="all">All categories</option>
+      </select>
+      <div class="filters" aria-label="Research table filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="ready_now">Ready now</button><button data-filter="ready_with_limits">Ready with limits</button><button data-filter="needs_outreach">Needs outreach</button><button data-filter="not_buildable_today">Not buildable today</button>
+      </div>
     </div>
       <div class="table-wrap">
         <table class="research-table">
@@ -562,7 +670,7 @@
             </tr>
           </thead>
           <tbody>
-        <tr data-verdict="ready_with_limits" data-category="CRM and Sales">
+        <tr data-verdict="ready_with_limits" data-category="CRM and Sales" data-search="salesforce crm and sales oauth2 jwt bearer session token connected-app setup, org permissions, and production oauth review add operational work. supported">
           <td>1</td>
           <td><b>Salesforce</b><small>Enterprise CRM platform for accounts, leads, opportunities, service, and custom objects.</small></td>
           <td>CRM and Sales</td>
@@ -574,7 +682,7 @@
           <td>supported<small>salesforce</small></td>
           <td><a href="https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm" target="_blank" rel="noreferrer">source 1</a> <a href="https://help.salesforce.com/s/articleView?id=sf.connected_app_create_api_integration.htm&amp;type=5" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="hubspot crm and sales oauth2 private app token mostly scope design and rate-limit handling. supported">
           <td>2</td>
           <td><b>HubSpot</b><small>CRM and marketing platform covering contacts, companies, deals, tickets, and automation.</small></td>
           <td>CRM and Sales</td>
@@ -586,7 +694,7 @@
           <td>supported<small>hubspot</small></td>
           <td><a href="https://developers.hubspot.com/docs/api/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.hubspot.com/docs/api/private-apps" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="pipedrive crm and sales oauth2 api token straightforward connector; main work is object coverage and pagination. supported">
           <td>3</td>
           <td><b>Pipedrive</b><small>Sales CRM for leads, deals, pipelines, activities, and organizations.</small></td>
           <td>CRM and Sales</td>
@@ -598,7 +706,7 @@
           <td>supported<small>pipedrive</small></td>
           <td><a href="https://developers.pipedrive.com/docs/api/v1" target="_blank" rel="noreferrer">source 1</a> <a href="https://pipedrive.readme.io/docs/marketplace-oauth-authorization" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="attio crm and sales oauth2 api token need careful schema handling because records and lists are highly customizable. supported">
           <td>4</td>
           <td><b>Attio</b><small>Modern CRM workspace for companies, people, lists, records, and custom objects.</small></td>
           <td>CRM and Sales</td>
@@ -608,9 +716,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>Need careful schema handling because records and lists are highly customizable.</td>
           <td>supported<small>attio</small></td>
-          <td><a href="https://docs.attio.com/rest-api/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.attio.com/rest-api/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://docs.attio.com/rest-api/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.attio.com/rest-api/guides/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="twenty crm and sales api key jwt oauth2 open-source deployments may differ, so connector should support instance url configuration. partial_or_adjacent">
           <td>5</td>
           <td><b>Twenty</b><small>Open-source CRM with people, companies, opportunities, tasks, and customizable data.</small></td>
           <td>CRM and Sales</td>
@@ -622,7 +730,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://twenty.com/developers" target="_blank" rel="noreferrer">source 1</a> <a href="https://github.com/twentyhq/twenty" target="_blank" rel="noreferrer">source 2</a><small>ready_now_without_high_confidence</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="CRM and Sales">
+        <tr data-verdict="ready_with_limits" data-category="CRM and Sales" data-search="podio crm and sales oauth2 app token legacy app-token patterns and workspace permissions need careful handling. supported">
           <td>6</td>
           <td><b>Podio</b><small>Work management and CRM-style app builder for organizations, apps, items, and tasks.</small></td>
           <td>CRM and Sales</td>
@@ -634,7 +742,7 @@
           <td>supported<small>podio</small></td>
           <td><a href="https://developers.podio.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.podio.com/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="zoho crm crm and sales oauth2 regional domains and granular scopes must be modeled explicitly. supported">
           <td>7</td>
           <td><b>Zoho CRM</b><small>CRM suite for leads, contacts, accounts, deals, activities, and automation.</small></td>
           <td>CRM and Sales</td>
@@ -646,7 +754,7 @@
           <td>supported<small>zoho-crm</small></td>
           <td><a href="https://www.zoho.com/crm/developer/docs/api/v7/" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.zoho.com/accounts/protocol/oauth.html" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="CRM and Sales">
+        <tr data-verdict="ready_now" data-category="CRM and Sales" data-search="close crm and sales api key oauth2 main work is mapping activity objects and call/email event behavior. supported">
           <td>8</td>
           <td><b>Close</b><small>Inside-sales CRM for leads, contacts, opportunities, calls, emails, and tasks.</small></td>
           <td>CRM and Sales</td>
@@ -658,7 +766,7 @@
           <td>supported<small>close</small></td>
           <td><a href="https://developer.close.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.close.com/topics/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="CRM and Sales">
+        <tr data-verdict="ready_with_limits" data-category="CRM and Sales" data-search="copper crm and sales api key api keys require a copper account with sufficient plan/admin access. not_found">
           <td>9</td>
           <td><b>Copper</b><small>Google Workspace-native CRM for people, companies, opportunities, leads, and activities.</small></td>
           <td>CRM and Sales</td>
@@ -670,7 +778,7 @@
           <td>not_found</td>
           <td><a href="https://developer.copper.com/" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="CRM and Sales">
+        <tr data-verdict="needs_outreach" data-category="CRM and Sales" data-search="dealcloud crm and sales oauth2 client credentials credentials and sandbox access appear tied to customer or partner access. partial_or_adjacent">
           <td>10</td>
           <td><b>DealCloud</b><small>Deal and relationship management platform for financial services workflows.</small></td>
           <td>CRM and Sales</td>
@@ -682,7 +790,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://api.docs.dealcloud.com/" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="zendesk support and helpdesk oauth2 api token basic large api surface needs staged coverage and permission-sensitive write actions. supported">
           <td>11</td>
           <td><b>Zendesk</b><small>Support platform for tickets, users, organizations, help center, chat, and routing.</small></td>
           <td>Support and Helpdesk</td>
@@ -692,9 +800,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>Large API surface needs staged coverage and permission-sensitive write actions.</td>
           <td>supported<small>zendesk</small></td>
-          <td><a href="https://developer.zendesk.com/api-reference/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.zendesk.com/documentation/ticketing/using-the-zendesk-api/oauth-authentication-with-zendesk/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developer.zendesk.com/api-reference/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.zendesk.com/documentation/api-basics/authentication/creating-and-using-oauth-tokens-with-the-api/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="intercom support and helpdesk oauth2 access token marketplace app review and scopes are the main operational steps. supported">
           <td>12</td>
           <td><b>Intercom</b><small>Customer messaging and support platform for conversations, contacts, tickets, and help center.</small></td>
           <td>Support and Helpdesk</td>
@@ -706,7 +814,7 @@
           <td>supported<small>intercom</small></td>
           <td><a href="https://developers.intercom.com/docs/references/rest-api/api.intercom.io" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.intercom.com/docs/build-an-integration/learn-more/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="freshdesk support and helpdesk api key oauth2 domain-specific tenant urls and api-key security need clean onboarding. supported">
           <td>13</td>
           <td><b>Freshdesk</b><small>Helpdesk product for tickets, contacts, companies, agents, solutions, and automations.</small></td>
           <td>Support and Helpdesk</td>
@@ -716,9 +824,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>Domain-specific tenant URLs and API-key security need clean onboarding.</td>
           <td>supported<small>freshdesk</small></td>
-          <td><a href="https://developers.freshdesk.com/api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.freshworks.com/docs/app-sdk/v3.0/freshdesk/serverless-apps/oauth/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developers.freshdesk.com/api/" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="front support and helpdesk oauth2 api token conversation write actions need strong guardrails. supported">
           <td>14</td>
           <td><b>Front</b><small>Shared inbox and customer operations platform for conversations, contacts, channels, and teammates.</small></td>
           <td>Support and Helpdesk</td>
@@ -730,7 +838,7 @@
           <td>supported<small>front</small></td>
           <td><a href="https://dev.frontapp.com/reference/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://dev.frontapp.com/docs/oauth" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_with_limits" data-category="Support and Helpdesk" data-search="pylon support and helpdesk api key public docs exist but credentials likely require a workspace/customer plan. not_found">
           <td>15</td>
           <td><b>Pylon</b><small>B2B customer support platform focused on Slack, Microsoft Teams, email, and customer portals.</small></td>
           <td>Support and Helpdesk</td>
@@ -742,7 +850,7 @@
           <td>not_found</td>
           <td><a href="https://docs.usepylon.com/" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="liveagent support and helpdesk api key instance url and account-specific permissions must be captured. not_found">
           <td>16</td>
           <td><b>LiveAgent</b><small>Helpdesk and live-chat suite for tickets, chats, calls, customers, and knowledge base.</small></td>
           <td>Support and Helpdesk</td>
@@ -752,9 +860,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>Instance URL and account-specific permissions must be captured.</td>
           <td>not_found</td>
-          <td><a href="https://support.liveagent.com/965412-API" target="_blank" rel="noreferrer">source 1</a><small>ready_now_without_high_confidence</small></td>
+          <td><a href="https://support.liveagent.com/802463-REST-API" target="_blank" rel="noreferrer">source 1</a> <a href="https://support.liveagent.com/840770-Complete-API-reference" target="_blank" rel="noreferrer">source 2</a><small>ready_now_without_high_confidence</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="plain support and helpdesk api key graphql schema coverage and mutation guardrails are the main work. partial_or_adjacent">
           <td>17</td>
           <td><b>Plain</b><small>Customer support platform with GraphQL APIs for customers, threads, issues, and events.</small></td>
           <td>Support and Helpdesk</td>
@@ -764,9 +872,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>GraphQL schema coverage and mutation guardrails are the main work.</td>
           <td>partial_or_adjacent</td>
-          <td><a href="https://www.plain.com/docs/api-reference/graphql/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.plain.com/docs/api-reference/graphql/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://www.plain.com/docs/graphql/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.plain.com/docs/graphql/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_now" data-category="Support and Helpdesk" data-search="help scout support and helpdesk oauth2 api token mailbox/team permissions should be surfaced clearly. supported">
           <td>18</td>
           <td><b>Help Scout</b><small>Customer support platform for conversations, customers, mailboxes, docs, and teams.</small></td>
           <td>Support and Helpdesk</td>
@@ -778,7 +886,7 @@
           <td>supported<small>helpscout</small></td>
           <td><a href="https://developer.helpscout.com/mailbox-api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.helpscout.com/mailbox-api/overview/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Support and Helpdesk">
+        <tr data-verdict="ready_with_limits" data-category="Support and Helpdesk" data-search="gorgias support and helpdesk oauth2 api key api access is tied to customer/admin accounts and ecommerce context. partial_or_adjacent">
           <td>19</td>
           <td><b>Gorgias</b><small>Ecommerce helpdesk for tickets, customers, macros, rules, and Shopify-centric support workflows.</small></td>
           <td>Support and Helpdesk</td>
@@ -788,9 +896,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>API access is tied to customer/admin accounts and ecommerce context.</td>
           <td>partial_or_adjacent</td>
-          <td><a href="https://developers.gorgias.com/reference/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.gorgias.com/docs/oauth2" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developers.gorgias.com/reference/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Support and Helpdesk">
+        <tr data-verdict="needs_outreach" data-category="Support and Helpdesk" data-search="gladly support and helpdesk oauth2 api token developer access and production credentials appear enterprise/partner mediated. not_found">
           <td>20</td>
           <td><b>Gladly</b><small>Enterprise customer-service platform for conversations, customers, tasks, and support channels.</small></td>
           <td>Support and Helpdesk</td>
@@ -802,7 +910,7 @@
           <td>not_found</td>
           <td><a href="https://developer.gladly.com/rest/" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="slack communications and messaging oauth2 bot token user token marketplace review and granular scopes matter for public distribution. supported">
           <td>21</td>
           <td><b>Slack</b><small>Team messaging platform for channels, users, messages, files, workflows, and apps.</small></td>
           <td>Communications and Messaging</td>
@@ -814,7 +922,7 @@
           <td>supported<small>slack</small></td>
           <td><a href="https://api.slack.com/web" target="_blank" rel="noreferrer">source 1</a> <a href="https://api.slack.com/authentication/oauth-v2" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="twilio communications and messaging basic api key oauth2 phone-number setup, regional compliance, and spend limits are operational constraints. supported">
           <td>22</td>
           <td><b>Twilio</b><small>Communications API platform for SMS, voice, WhatsApp, verification, email, and conversations.</small></td>
           <td>Communications and Messaging</td>
@@ -826,7 +934,7 @@
           <td>supported<small>twilio</small></td>
           <td><a href="https://www.twilio.com/docs/usage/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.twilio.com/docs/iam/api-keys" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="zoho cliq communications and messaging oauth2 zoho account region handling and scopes. not_found">
           <td>23</td>
           <td><b>Zoho Cliq</b><small>Team chat and collaboration platform in the Zoho suite.</small></td>
           <td>Communications and Messaging</td>
@@ -838,7 +946,7 @@
           <td>not_found</td>
           <td><a href="https://www.zoho.com/cliq/help/restapi/v2/" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.zoho.com/accounts/protocol/oauth.html" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging">
+        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging" data-search="lark (larksuite) communications and messaging oauth2 tenant token app access token app review, tenant installation, and regional lark/feishu differences. not_found">
           <td>24</td>
           <td><b>Lark (Larksuite)</b><small>Collaboration suite for messaging, docs, calendar, approval, and workplace apps.</small></td>
           <td>Communications and Messaging</td>
@@ -850,7 +958,7 @@
           <td>not_found</td>
           <td><a href="https://open.larksuite.com/document/home/index" target="_blank" rel="noreferrer">source 1</a> <a href="https://open.larksuite.com/document/server-docs/authentication-management/access-token/tenant_access_token_internal" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging">
+        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging" data-search="pumble communications and messaging api token api surface and developer access are narrower than slack/discord. not_found">
           <td>25</td>
           <td><b>Pumble</b><small>Team chat app for channels, direct messages, users, and workspace communication.</small></td>
           <td>Communications and Messaging</td>
@@ -862,7 +970,7 @@
           <td>not_found</td>
           <td><a href="https://pumble.com/help/integrations/api/" target="_blank" rel="noreferrer">source 1</a><small>low_confidence_requires_refresh</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="discord communications and messaging oauth2 bot token bot permissions and privileged intents must be handled explicitly. supported">
           <td>26</td>
           <td><b>Discord</b><small>Community chat platform with bots, guilds, channels, messages, and interactions.</small></td>
           <td>Communications and Messaging</td>
@@ -874,7 +982,7 @@
           <td>supported<small>discord</small></td>
           <td><a href="https://discord.com/developers/docs/intro" target="_blank" rel="noreferrer">source 1</a> <a href="https://discord.com/developers/docs/topics/oauth2" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="telegram communications and messaging bot token bot-only api is strong but not equivalent to full user-account automation. supported">
           <td>27</td>
           <td><b>Telegram</b><small>Messaging platform with Bot API for chats, messages, files, and updates.</small></td>
           <td>Communications and Messaging</td>
@@ -886,7 +994,7 @@
           <td>supported<small>telegram</small></td>
           <td><a href="https://core.telegram.org/bots/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://core.telegram.org/bots/features" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging">
+        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging" data-search="whatsapp business communications and messaging oauth2 access token business verification, app review, phone-number setup, and template approval. partial_or_adjacent">
           <td>28</td>
           <td><b>WhatsApp Business</b><small>Meta messaging API for business WhatsApp conversations, templates, and phone numbers.</small></td>
           <td>Communications and Messaging</td>
@@ -898,7 +1006,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://developers.facebook.com/docs/whatsapp/cloud-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.facebook.com/docs/whatsapp/embedded-signup" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging">
+        <tr data-verdict="ready_with_limits" data-category="Communications and Messaging" data-search="aircall communications and messaging oauth2 api id/key requires an aircall account and admin-approved api/oauth app access. supported">
           <td>29</td>
           <td><b>Aircall</b><small>Cloud phone system API for calls, contacts, numbers, users, teams, and webhooks.</small></td>
           <td>Communications and Messaging</td>
@@ -910,7 +1018,7 @@
           <td>supported<small>aircall</small></td>
           <td><a href="https://developer.aircall.io/api-references/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.aircall.io/api-references/#authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Communications and Messaging">
+        <tr data-verdict="ready_now" data-category="Communications and Messaging" data-search="vonage communications and messaging api key/secret jwt oauth2 product-specific auth modes and telecom compliance need clear onboarding. not_found">
           <td>30</td>
           <td><b>Vonage</b><small>Communications platform for SMS, voice, video, verification, and messaging APIs.</small></td>
           <td>Communications and Messaging</td>
@@ -922,7 +1030,7 @@
           <td>not_found</td>
           <td><a href="https://developer.vonage.com/en/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.vonage.com/en/concepts/guides/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="needs_outreach" data-category="Marketing, Ads, Email and Social" data-search="google ads marketing, ads, email and social oauth2 developer token developer token approval and account access are heavier than normal self-serve apis. supported">
           <td>31</td>
           <td><b>Google Ads</b><small>Advertising API for campaigns, customers, ads, assets, keywords, bidding, and reporting.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -934,7 +1042,7 @@
           <td>supported<small>googleads</small></td>
           <td><a href="https://developers.google.com/google-ads/api/docs/start" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.google.com/google-ads/api/docs/oauth/overview" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social" data-search="meta ads marketing, ads, email and social oauth2 access token business verification, app review, permissions, and ad-account access. supported">
           <td>32</td>
           <td><b>Meta Ads</b><small>Marketing API for campaigns, ad sets, ads, creatives, audiences, and insights.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -944,9 +1052,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Business verification, app review, permissions, and ad-account access.</td>
           <td>supported<small>facebookads</small></td>
-          <td><a href="https://developers.facebook.com/docs/marketing-apis/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.facebook.com/docs/facebook-login/guides/access-tokens/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developers.facebook.com/docs/marketing-api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.facebook.com/docs/facebook-login/guides/access-tokens/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="needs_outreach" data-category="Marketing, Ads, Email and Social" data-search="linkedin ads marketing, ads, email and social oauth2 marketing api access commonly requires app review and product access approval. supported">
           <td>33</td>
           <td><b>LinkedIn Ads</b><small>LinkedIn Marketing API for ad accounts, campaigns, creatives, audiences, and analytics.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -958,7 +1066,7 @@
           <td>supported<small>linkedin</small></td>
           <td><a href="https://learn.microsoft.com/en-us/linkedin/marketing/" target="_blank" rel="noreferrer">source 1</a> <a href="https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow" target="_blank" rel="noreferrer">source 2</a><small>weak_or_marketing_only_evidence</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social" data-search="gohighlevel marketing, ads, email and social oauth2 api key agency/location model and oauth scopes need careful data partitioning. partial_or_adjacent">
           <td>34</td>
           <td><b>GoHighLevel</b><small>Agency CRM and marketing automation platform for locations, contacts, workflows, and calendars.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -970,7 +1078,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://highlevel.stoplight.io/docs/integrations/" target="_blank" rel="noreferrer">source 1</a> <a href="https://marketplace.gohighlevel.com/docs/oauth/Overview" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social" data-search="mailchimp marketing, ads, email and social oauth2 api key datacenter-specific api urls and list permission guardrails. supported">
           <td>35</td>
           <td><b>Mailchimp</b><small>Email marketing platform for audiences, campaigns, automations, templates, and reports.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -982,7 +1090,7 @@
           <td>supported<small>mailchimp</small></td>
           <td><a href="https://mailchimp.com/developer/marketing/api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social" data-search="klaviyo marketing, ads, email and social api key oauth2 revisioned apis and profile/event semantics need careful versioning. supported">
           <td>36</td>
           <td><b>Klaviyo</b><small>Marketing automation platform for profiles, events, campaigns, flows, lists, and ecommerce messaging.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -994,7 +1102,7 @@
           <td>supported<small>klaviyo</small></td>
           <td><a href="https://developers.klaviyo.com/en/reference/api_overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.klaviyo.com/en/docs/authenticate_" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social" data-search="systeme.io marketing, ads, email and social api key public api coverage appears narrower than mature marketing platforms. not_found">
           <td>37</td>
           <td><b>systeme.io</b><small>Funnel, email, course, and automation platform for online businesses.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -1006,7 +1114,7 @@
           <td>not_found</td>
           <td><a href="https://developer.systeme.io/reference" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social" data-search="pinterest marketing, ads, email and social oauth2 app review and advertising permissions can gate production use. supported">
           <td>38</td>
           <td><b>Pinterest</b><small>Visual discovery and ads platform with pins, boards, catalogs, audiences, and ad reporting.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -1018,7 +1126,7 @@
           <td>supported<small>pinterest</small></td>
           <td><a href="https://developers.pinterest.com/docs/api/v5/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.pinterest.com/docs/getting-started/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_with_limits" data-category="Marketing, Ads, Email and Social" data-search="threads (meta) marketing, ads, email and social oauth2 access token newer api surface, meta app review, and content permission constraints. not_found">
           <td>39</td>
           <td><b>Threads (Meta)</b><small>Meta social platform API for Threads publishing, replies, insights, and profiles.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -1030,7 +1138,7 @@
           <td>not_found</td>
           <td><a href="https://developers.facebook.com/docs/threads" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.facebook.com/docs/threads/get-started" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social">
+        <tr data-verdict="ready_now" data-category="Marketing, Ads, Email and Social" data-search="sendgrid marketing, ads, email and social api key email-domain verification and sending compliance are operational setup items. supported">
           <td>40</td>
           <td><b>SendGrid</b><small>Email API platform for transactional email, templates, contacts, suppression, and analytics.</small></td>
           <td>Marketing, Ads, Email and Social</td>
@@ -1042,7 +1150,7 @@
           <td>supported<small>sendgrid</small></td>
           <td><a href="https://www.twilio.com/docs/sendgrid/api-reference" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.twilio.com/docs/sendgrid/for-developers/sending-email/api-getting-started" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Ecommerce">
+        <tr data-verdict="ready_now" data-category="Ecommerce" data-search="shopify ecommerce oauth2 access token public app review and protected customer data requirements for broad distribution. supported">
           <td>41</td>
           <td><b>Shopify</b><small>Commerce platform for stores, products, orders, customers, inventory, and fulfillment.</small></td>
           <td>Ecommerce</td>
@@ -1054,7 +1162,7 @@
           <td>supported<small>shopify</small></td>
           <td><a href="https://shopify.dev/docs/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://shopify.dev/docs/apps/build/authentication-authorization" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Ecommerce">
+        <tr data-verdict="ready_now" data-category="Ecommerce" data-search="woocommerce ecommerce consumer key/secret basic self-hosted wordpress instances vary in url, plugins, and permission setup. supported">
           <td>42</td>
           <td><b>WooCommerce</b><small>WordPress commerce plugin exposing products, orders, customers, coupons, and reports.</small></td>
           <td>Ecommerce</td>
@@ -1066,7 +1174,7 @@
           <td>supported<small>woocommerce</small></td>
           <td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/" target="_blank" rel="noreferrer">source 1</a> <a href="https://woocommerce.com/document/woocommerce-rest-api/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Ecommerce">
+        <tr data-verdict="ready_now" data-category="Ecommerce" data-search="bigcommerce ecommerce oauth2 access token app marketplace review and store-hash based tenant routing. supported">
           <td>43</td>
           <td><b>BigCommerce</b><small>Commerce platform API for catalogs, carts, orders, customers, checkouts, and store operations.</small></td>
           <td>Ecommerce</td>
@@ -1078,7 +1186,7 @@
           <td>supported<small>bigcommerce</small></td>
           <td><a href="https://developer.bigcommerce.com/docs/rest-management" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.bigcommerce.com/docs/start/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Ecommerce">
+        <tr data-verdict="ready_with_limits" data-category="Ecommerce" data-search="salesforce commerce cloud ecommerce oauth2 client credentials sandbox/customer org access is the limiting operational dependency. not_found">
           <td>44</td>
           <td><b>Salesforce Commerce Cloud</b><small>Enterprise commerce platform for shoppers, products, baskets, orders, and storefront APIs.</small></td>
           <td>Ecommerce</td>
@@ -1090,7 +1198,7 @@
           <td>not_found</td>
           <td><a href="https://developer.salesforce.com/docs/commerce/commerce-api/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Ecommerce">
+        <tr data-verdict="ready_now" data-category="Ecommerce" data-search="magento (adobe commerce) ecommerce oauth1 integration token admin token self-hosted versions and store customizations create schema/version variance. not_found">
           <td>45</td>
           <td><b>Magento (Adobe Commerce)</b><small>Adobe Commerce/Magento APIs for catalog, cart, checkout, orders, customers, and admin operations.</small></td>
           <td>Ecommerce</td>
@@ -1100,9 +1208,9 @@
           <td><span class="pill ready_now">Ready now</span></td>
           <td>Self-hosted versions and store customizations create schema/version variance.</td>
           <td>not_found</td>
-          <td><a href="https://developer.adobe.com/commerce/webapi/rest/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developer.adobe.com/commerce/webapi/rest/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.adobe.com/commerce/webapi/get-started/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Ecommerce">
+        <tr data-verdict="ready_with_limits" data-category="Ecommerce" data-search="squarespace ecommerce oauth2 api key api coverage is commerce-focused and requires eligible site/admin access. not_found">
           <td>46</td>
           <td><b>Squarespace</b><small>Website and commerce platform with APIs for orders, inventory, products, and profiles.</small></td>
           <td>Ecommerce</td>
@@ -1114,7 +1222,7 @@
           <td>not_found</td>
           <td><a href="https://developers.squarespace.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.squarespace.com/commerce-apis/overview" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Ecommerce">
+        <tr data-verdict="ready_now" data-category="Ecommerce" data-search="ecwid ecommerce oauth2 access token store-specific access tokens and app installation flow. not_found">
           <td>47</td>
           <td><b>Ecwid</b><small>Ecommerce platform for storefronts, products, orders, customers, and carts.</small></td>
           <td>Ecommerce</td>
@@ -1126,7 +1234,7 @@
           <td>not_found</td>
           <td><a href="https://api-docs.ecwid.com/reference/rest-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://api-docs.ecwid.com/reference/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Ecommerce">
+        <tr data-verdict="ready_with_limits" data-category="Ecommerce" data-search="gumroad ecommerce oauth2 access token api is useful but much narrower than full commerce platforms. not_found">
           <td>48</td>
           <td><b>Gumroad</b><small>Creator commerce platform for products, sales, subscribers, licenses, and offers.</small></td>
           <td>Ecommerce</td>
@@ -1138,7 +1246,7 @@
           <td>not_found</td>
           <td><a href="https://gumroad.com/api" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Ecommerce">
+        <tr data-verdict="needs_outreach" data-category="Ecommerce" data-search="amazon selling partner ecommerce oauth2 login with amazon aws signature v4 developer profile, app registration, role approval, and seller authorization are heavy gates. supported">
           <td>49</td>
           <td><b>Amazon Selling Partner</b><small>Amazon marketplace API for listings, orders, reports, feeds, inventory, and fulfillment.</small></td>
           <td>Ecommerce</td>
@@ -1150,7 +1258,7 @@
           <td>supported<small>amazon</small></td>
           <td><a href="https://developer-docs.amazon.com/sp-api/docs" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="not_buildable_today" data-category="Ecommerce">
+        <tr data-verdict="not_buildable_today" data-category="Ecommerce" data-search="fanbasis ecommerce unknown no clear public developer api or credential self-serve path found. not_found">
           <td>50</td>
           <td><b>fanbasis</b><small>Creator monetization and fan engagement platform.</small></td>
           <td>Ecommerce</td>
@@ -1162,7 +1270,7 @@
           <td>not_found</td>
           <td><a href="https://www.fanbasis.com/" target="_blank" rel="noreferrer">source 1</a><small>weak_or_marketing_only_evidence, low_confidence_requires_refresh, unclear_credential_access</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping" data-search="dataforseo data, seo and scraping basic usage costs and task/result polling patterns must be managed. partial_or_adjacent">
           <td>51</td>
           <td><b>DataForSEO</b><small>SEO and search-data API platform for SERP, keyword, backlinks, and competitor data.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1174,7 +1282,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://docs.dataforseo.com/v3/" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.dataforseo.com/v3/appendix-user-data/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping" data-search="se ranking data, seo and scraping api key requires a paid account/api entitlement for practical use. not_found">
           <td>52</td>
           <td><b>SE Ranking</b><small>SEO platform with APIs for rankings, projects, backlinks, competitors, and reports.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1184,9 +1292,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Requires a paid account/API entitlement for practical use.</td>
           <td>not_found</td>
-          <td><a href="https://seranking.com/api.html" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
+          <td><a href="https://www.postman.com/serankingdev/se-ranking-developers/overview" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping" data-search="ahrefs data, seo and scraping api token api access is plan/credit gated and expensive enough to require commercial alignment. supported">
           <td>53</td>
           <td><b>Ahrefs</b><small>SEO data platform for backlinks, keywords, pages, domains, and rank data.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1196,9 +1304,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>API access is plan/credit gated and expensive enough to require commercial alignment.</td>
           <td>supported<small>ahrefs</small></td>
-          <td><a href="https://docs.ahrefs.com/docs/api/site-explorer/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://ahrefs.com/api" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://docs.ahrefs.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://ahrefs.com/api" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping" data-search="mrscraper data, seo and scraping api key narrower scope than general app connectors but agent-callable extraction is straightforward. partial_or_adjacent">
           <td>54</td>
           <td><b>MrScraper</b><small>AI web-scraping API for extraction jobs, datasets, and scraping automation.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1210,7 +1318,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://docs.mrscraper.com/" target="_blank" rel="noreferrer">source 1</a><small>ready_now_without_high_confidence</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping" data-search="apify data, seo and scraping api token actor-specific schemas vary, so generic tools need schema discovery. supported">
           <td>55</td>
           <td><b>Apify</b><small>Cloud platform for actors, web scraping, browser automation, datasets, and schedules.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1222,7 +1330,7 @@
           <td>supported<small>apify</small></td>
           <td><a href="https://docs.apify.com/api/v2" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.apify.com/platform/integrations/api" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_now" data-category="Data, SEO and Scraping" data-search="firecrawl data, seo and scraping api key main work is credit/rate-limit handling and safe crawl constraints. supported">
           <td>56</td>
           <td><b>Firecrawl</b><small>Web crawling and scraping API for markdown extraction, maps, search, and batch jobs.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1234,7 +1342,7 @@
           <td>supported<small>firecrawl</small></td>
           <td><a href="https://docs.firecrawl.dev/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.firecrawl.dev/mcp-server" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping" data-search="bright data data, seo and scraping api token proxy credentials paid account, compliance controls, and proxy/data product selection. supported">
           <td>57</td>
           <td><b>Bright Data</b><small>Web data platform for proxies, scraping browser, datasets, and SERP/data collection.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1244,9 +1352,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Paid account, compliance controls, and proxy/data product selection.</td>
           <td>supported<small>brightdata</small></td>
-          <td><a href="https://docs.brightdata.com/api-reference/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.brightdata.com/general/account/api-token" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://docs.brightdata.com/api-reference/authentication" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping" data-search="sherlock data, seo and scraping none it is a cli/open-source project rather than a hosted authenticated api. partial_or_adjacent">
           <td>58</td>
           <td><b>Sherlock</b><small>Open-source username search tool across social networks.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1258,7 +1366,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Data, SEO and Scraping">
+        <tr data-verdict="needs_outreach" data-category="Data, SEO and Scraping" data-search="waterfall.io data, seo and scraping api key developer docs and credentials appear gated behind sales/customer access. not_found">
           <td>59</td>
           <td><b>Waterfall.io</b><small>Contact and company intelligence platform for enrichment and lead data.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1270,7 +1378,7 @@
           <td>not_found</td>
           <td><a href="https://www.waterfall.io/" target="_blank" rel="noreferrer">source 1</a><small>weak_or_marketing_only_evidence, low_confidence_requires_refresh</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping">
+        <tr data-verdict="ready_with_limits" data-category="Data, SEO and Scraping" data-search="clay data, seo and scraping api key webhook public api coverage and credits are plan-dependent. partial_or_adjacent">
           <td>60</td>
           <td><b>Clay</b><small>AI sales and data enrichment workspace for lists, signals, workflows, and outreach data.</small></td>
           <td>Data, SEO and Scraping</td>
@@ -1280,9 +1388,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Public API coverage and credits are plan-dependent.</td>
           <td>partial_or_adjacent</td>
-          <td><a href="https://docs.clay.com/en/articles/9672481-clay-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.clay.com/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://university.clay.com/docs/http-api-integration-overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.clay.com/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="github developer, infra and data platforms oauth2 github app personal access token choose between github app and user oauth based on tenant model. supported">
           <td>61</td>
           <td><b>GitHub</b><small>Developer platform for repositories, issues, pull requests, Actions, packages, and code search.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1294,7 +1402,7 @@
           <td>supported<small>github</small></td>
           <td><a href="https://docs.github.com/en/rest" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/about-authentication-with-a-github-app" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="vercel developer, infra and data platforms api token oauth2 team/project scoping and deployment safety controls. supported">
           <td>62</td>
           <td><b>Vercel</b><small>Frontend cloud platform for projects, deployments, domains, environment variables, and teams.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1306,7 +1414,7 @@
           <td>supported<small>vercel</small></td>
           <td><a href="https://vercel.com/docs/rest-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://vercel.com/docs/rest-api/reference/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="netlify developer, infra and data platforms oauth2 personal access token site/team permissions and destructive deploy actions require confirmation flows. supported">
           <td>63</td>
           <td><b>Netlify</b><small>Web hosting and deployment platform for sites, builds, deploys, DNS, and forms.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1318,7 +1426,7 @@
           <td>supported<small>netlify</small></td>
           <td><a href="https://docs.netlify.com/api/get-started/" target="_blank" rel="noreferrer">source 1</a> <a href="https://open-api.netlify.com/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="cloudflare developer, infra and data platforms api token api key oauth2 large scope surface requires precise permission templates. supported">
           <td>64</td>
           <td><b>Cloudflare</b><small>Internet infrastructure platform for DNS, workers, accounts, zones, security, and storage.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1330,7 +1438,7 @@
           <td>supported<small>cloudflare</small></td>
           <td><a href="https://developers.cloudflare.com/api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="supabase developer, infra and data platforms api key jwt access token differentiate project management apis from generated database apis. supported">
           <td>65</td>
           <td><b>Supabase</b><small>Postgres app platform with database, auth, storage, edge functions, and management APIs.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1342,7 +1450,7 @@
           <td>supported<small>supabase</small></td>
           <td><a href="https://supabase.com/docs/reference/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://supabase.com/docs/guides/api/api-keys" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_with_limits" data-category="Developer, Infra and Data platforms" data-search="neo4j developer, infra and data platforms api key basic bearer token agent toolkit should separate aura admin apis from graph query execution. partial_or_adjacent">
           <td>66</td>
           <td><b>Neo4j</b><small>Graph database platform with Aura management APIs and database driver access.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1352,9 +1460,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Agent toolkit should separate Aura admin APIs from graph query execution.</td>
           <td>partial_or_adjacent</td>
-          <td><a href="https://neo4j.com/docs/aura/platform/api/overview/" target="_blank" rel="noreferrer">source 1</a> <a href="https://neo4j.com/docs/api/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://neo4j.com/docs/aura/platform/api/overview/" target="_blank" rel="noreferrer">source 1</a> <a href="https://neo4j.com/docs/operations-manual/current/authentication-authorization/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_with_limits" data-category="Developer, Infra and Data platforms" data-search="snowflake developer, infra and data platforms oauth2 key-pair jwt username/password requires account/admin setup, warehouse access, and strong query safety. partial_or_adjacent">
           <td>67</td>
           <td><b>Snowflake</b><small>Cloud data platform for warehouses, databases, SQL, notebooks, stages, and governance.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1366,7 +1474,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.snowflake.com/en/developer-guide/sql-api/index" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="mongodb atlas developer, infra and data platforms api key oauth2 ip access lists and project/org scoping need onboarding support. supported">
           <td>68</td>
           <td><b>MongoDB Atlas</b><small>Managed MongoDB platform for clusters, projects, databases, users, backups, and monitoring.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1378,7 +1486,7 @@
           <td>supported<small>mongodb</small></td>
           <td><a href="https://www.mongodb.com/docs/atlas/api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.mongodb.com/docs/atlas/configure-api-access/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="datadog developer, infra and data platforms api key application key oauth2 site/region routing and high-risk monitor mutations need safeguards. supported">
           <td>69</td>
           <td><b>Datadog</b><small>Observability platform for metrics, logs, traces, monitors, incidents, dashboards, and security.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1390,7 +1498,7 @@
           <td>supported<small>datadog</small></td>
           <td><a href="https://docs.datadoghq.com/api/latest/" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.datadoghq.com/account_management/api-app-keys/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms">
+        <tr data-verdict="ready_now" data-category="Developer, Infra and Data platforms" data-search="sentry developer, infra and data platforms oauth2 auth token organization/project scopes and destructive issue actions need guardrails. supported">
           <td>70</td>
           <td><b>Sentry</b><small>Error monitoring platform for projects, issues, events, releases, alerts, and teams.</small></td>
           <td>Developer, Infra and Data platforms</td>
@@ -1402,7 +1510,7 @@
           <td>supported<small>sentry</small></td>
           <td><a href="https://docs.sentry.io/api/" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.sentry.io/api/auth/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="notion productivity and project management oauth2 internal integration token database schemas and shared-page permissions shape what the agent can see. supported">
           <td>71</td>
           <td><b>Notion</b><small>Workspace docs and database platform for pages, blocks, databases, comments, and users.</small></td>
           <td>Productivity and Project Management</td>
@@ -1414,7 +1522,7 @@
           <td>supported<small>notion</small></td>
           <td><a href="https://developers.notion.com/reference/intro" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.notion.com/docs/authorization" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="airtable productivity and project management oauth2 personal access token base-specific schemas require dynamic discovery. supported">
           <td>72</td>
           <td><b>Airtable</b><small>No-code database platform for bases, tables, records, fields, automations, and interfaces.</small></td>
           <td>Productivity and Project Management</td>
@@ -1426,7 +1534,7 @@
           <td>supported<small>airtable</small></td>
           <td><a href="https://airtable.com/developers/web/api/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://airtable.com/developers/web/guides/personal-access-tokens" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="linear productivity and project management oauth2 api key graphql schemas and workspace permissions are the main implementation details. supported">
           <td>73</td>
           <td><b>Linear</b><small>Product development system for issues, projects, cycles, teams, documents, and comments.</small></td>
           <td>Productivity and Project Management</td>
@@ -1438,7 +1546,7 @@
           <td>supported<small>linear</small></td>
           <td><a href="https://developers.linear.app/docs/graphql/working-with-the-graphql-api" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.linear.app/docs/oauth/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="jira productivity and project management oauth2 api token basic atlassian cloud/site scoping and permission complexity. supported">
           <td>74</td>
           <td><b>Jira</b><small>Atlassian issue and project tracker for issues, projects, boards, workflows, and users.</small></td>
           <td>Productivity and Project Management</td>
@@ -1450,7 +1558,7 @@
           <td>supported<small>jira</small></td>
           <td><a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="asana productivity and project management oauth2 personal access token workspace/project scoping and mutation confirmation flows. supported">
           <td>75</td>
           <td><b>Asana</b><small>Work management platform for tasks, projects, portfolios, teams, goals, and comments.</small></td>
           <td>Productivity and Project Management</td>
@@ -1462,7 +1570,7 @@
           <td>supported<small>asana</small></td>
           <td><a href="https://developers.asana.com/reference/rest-api-reference" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.asana.com/docs/oauth" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="monday.com productivity and project management oauth2 api token graphql complexity and board-specific schemas. supported">
           <td>76</td>
           <td><b>Monday.com</b><small>Work OS for boards, items, columns, automations, docs, and workflow apps.</small></td>
           <td>Productivity and Project Management</td>
@@ -1474,7 +1582,7 @@
           <td>supported<small>monday</small></td>
           <td><a href="https://developer.monday.com/api-reference/docs" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.monday.com/apps/docs/oauth" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="clickup productivity and project management oauth2 api token hierarchy mapping and workspace permissions. supported">
           <td>77</td>
           <td><b>ClickUp</b><small>Project management platform for workspaces, spaces, folders, lists, tasks, docs, and goals.</small></td>
           <td>Productivity and Project Management</td>
@@ -1486,7 +1594,7 @@
           <td>supported<small>clickup</small></td>
           <td><a href="https://clickup.com/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://clickup.com/api/developer-portal/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="coda productivity and project management api token oauth2 doc/table schema discovery is required for high-quality agent tools. supported">
           <td>78</td>
           <td><b>Coda</b><small>Document and table platform for docs, tables, rows, formulas, packs, and automation.</small></td>
           <td>Productivity and Project Management</td>
@@ -1498,7 +1606,7 @@
           <td>supported<small>coda</small></td>
           <td><a href="https://coda.io/developers/apis/v1" target="_blank" rel="noreferrer">source 1</a> <a href="https://coda.io/developers/apis/v1#section/Authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="smartsheet productivity and project management oauth2 access token sheet-specific column schemas and enterprise permissions. supported">
           <td>79</td>
           <td><b>Smartsheet</b><small>Work management platform for sheets, rows, reports, dashboards, attachments, and workflows.</small></td>
           <td>Productivity and Project Management</td>
@@ -1510,7 +1618,7 @@
           <td>supported<small>smartsheet</small></td>
           <td><a href="https://smartsheet.redoc.ly/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Productivity and Project Management">
+        <tr data-verdict="ready_now" data-category="Productivity and Project Management" data-search="harvest productivity and project management oauth2 personal access token account id routing and time-entry write safety. not_found">
           <td>80</td>
           <td><b>Harvest</b><small>Time tracking and invoicing platform for time entries, projects, clients, users, and invoices.</small></td>
           <td>Productivity and Project Management</td>
@@ -1522,7 +1630,7 @@
           <td>not_found</td>
           <td><a href="https://help.getharvest.com/api-v2/" target="_blank" rel="noreferrer">source 1</a> <a href="https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Finance and Fintech">
+        <tr data-verdict="ready_now" data-category="Finance and Fintech" data-search="stripe finance and fintech api key oauth2 financial write actions need confirmations and idempotency. supported">
           <td>81</td>
           <td><b>Stripe</b><small>Payments platform for customers, payment intents, subscriptions, invoices, products, and billing.</small></td>
           <td>Finance and Fintech</td>
@@ -1534,7 +1642,7 @@
           <td>supported<small>stripe</small></td>
           <td><a href="https://docs.stripe.com/api" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.stripe.com/keys" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech">
+        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech" data-search="plaid finance and fintech client id/secret oauth2 through link sandbox is self-serve, but production access requires review and compliance approval. partial_or_adjacent">
           <td>82</td>
           <td><b>Plaid</b><small>Financial data network for bank account linking, transactions, identity, assets, and income.</small></td>
           <td>Finance and Fintech</td>
@@ -1546,7 +1654,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://plaid.com/docs/" target="_blank" rel="noreferrer">source 1</a> <a href="https://plaid.com/docs/api/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Finance and Fintech">
+        <tr data-verdict="ready_now" data-category="Finance and Fintech" data-search="binance finance and fintech api key hmac signature trading actions require strict guardrails, regional availability checks, and key permissions. partial_or_adjacent">
           <td>83</td>
           <td><b>Binance</b><small>Crypto exchange APIs for market data, trading, account state, wallets, and futures.</small></td>
           <td>Finance and Fintech</td>
@@ -1558,7 +1666,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://binance-docs.github.io/apidocs/spot/en/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Finance and Fintech">
+        <tr data-verdict="needs_outreach" data-category="Finance and Fintech" data-search="paygent connect finance and fintech api key token public api documentation and sandbox credentials are not clearly self-serve. not_found">
           <td>84</td>
           <td><b>Paygent Connect</b><small>Payment connectivity product associated with NMI-powered payment processing.</small></td>
           <td>Finance and Fintech</td>
@@ -1570,7 +1678,7 @@
           <td>not_found</td>
           <td><a href="https://www.nmi.com/developers/" target="_blank" rel="noreferrer">source 1</a> <a href="https://www.paygent.co.jp/" target="_blank" rel="noreferrer">source 2</a><small>low_confidence_requires_refresh</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech">
+        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech" data-search="ipayx finance and fintech api key docs suggest an api, but credential access and production approval path need confirmation. not_found">
           <td>85</td>
           <td><b>iPayX</b><small>AI-oriented payments or financial workflow platform with published docs but limited public footprint.</small></td>
           <td>Finance and Fintech</td>
@@ -1582,7 +1690,7 @@
           <td>not_found</td>
           <td><a href="https://ipayx.ai/docs" target="_blank" rel="noreferrer">source 1</a><small>low_confidence_requires_refresh, unclear_credential_access</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Finance and Fintech">
+        <tr data-verdict="ready_now" data-category="Finance and Fintech" data-search="quickbooks finance and fintech oauth2 sandbox/company selection and accounting object semantics. supported">
           <td>86</td>
           <td><b>QuickBooks</b><small>Accounting platform for companies, customers, invoices, bills, payments, reports, and payroll-adjacent data.</small></td>
           <td>Finance and Fintech</td>
@@ -1594,7 +1702,7 @@
           <td>supported<small>quickbooks</small></td>
           <td><a href="https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="Finance and Fintech">
+        <tr data-verdict="ready_now" data-category="Finance and Fintech" data-search="xero finance and fintech oauth2 tenant selection and accounting write confirmations. supported">
           <td>87</td>
           <td><b>Xero</b><small>Accounting platform for contacts, invoices, bills, bank transactions, journals, and reports.</small></td>
           <td>Finance and Fintech</td>
@@ -1606,7 +1714,7 @@
           <td>supported<small>xero</small></td>
           <td><a href="https://developer.xero.com/documentation/api/accounting/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.xero.com/documentation/guides/oauth2/overview/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech">
+        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech" data-search="brex finance and fintech oauth2 api token business account/admin access and financial data controls. supported">
           <td>88</td>
           <td><b>Brex</b><small>Corporate spend platform for cards, expenses, users, payments, vendors, and transactions.</small></td>
           <td>Finance and Fintech</td>
@@ -1616,9 +1724,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Business account/admin access and financial data controls.</td>
           <td>supported<small>brex</small></td>
-          <td><a href="https://developer.brex.com/openapi" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.brex.com/docs/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://developer.brex.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developer.brex.com/docs/authentication/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech">
+        <tr data-verdict="ready_with_limits" data-category="Finance and Fintech" data-search="ramp finance and fintech oauth2 api key customer/admin access, app approval, and financial write-action controls. supported">
           <td>89</td>
           <td><b>Ramp</b><small>Corporate card and finance automation platform for expenses, reimbursements, bills, users, and vendors.</small></td>
           <td>Finance and Fintech</td>
@@ -1630,7 +1738,7 @@
           <td>supported<small>ramp</small></td>
           <td><a href="https://docs.ramp.com/developer-api/v1/overview/introduction" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.ramp.com/developer-api/v1/overview/authentication" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="Finance and Fintech">
+        <tr data-verdict="needs_outreach" data-category="Finance and Fintech" data-search="pitchbook finance and fintech api key token research api access is enterprise/commercially gated. not_found">
           <td>90</td>
           <td><b>PitchBook</b><small>Private-market research platform with company, investor, deal, and fund data.</small></td>
           <td>Finance and Fintech</td>
@@ -1642,7 +1750,7 @@
           <td>not_found</td>
           <td><a href="https://pitchbook.com/products/apis" target="_blank" rel="noreferrer">source 1</a> <a href="https://pitchbook.com/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="not_buildable_today" data-category="AI, Research and Media-native">
+        <tr data-verdict="not_buildable_today" data-category="AI, Research and Media-native" data-search="notebooklm ai, research and media-native google oauth2 service account notebooklm is not exposed as a general self-serve public api; gemini apis are adjacent, not equivalent. not_found">
           <td>91</td>
           <td><b>NotebookLM</b><small>Google research and note-taking product; related Gemini APIs exist but NotebookLM itself lacks broad public API.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1654,7 +1762,7 @@
           <td>not_found</td>
           <td><a href="https://cloud.google.com/gemini/docs" target="_blank" rel="noreferrer">source 1</a> <a href="https://support.google.com/notebooklm/" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native" data-search="otter ai ai, research and media-native oauth2 mcp auth mcp/server access appears to depend on account capabilities rather than a broad public rest api. not_found">
           <td>92</td>
           <td><b>Otter AI</b><small>Meeting transcription and notes platform with AI summaries and collaboration features.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1666,19 +1774,19 @@
           <td>not_found</td>
           <td><a href="https://help.otter.ai/hc/en-us" target="_blank" rel="noreferrer">source 1</a> <a href="https://help.otter.ai/hc/en-us/articles/36204186741783-Otter-MCP-Server" target="_blank" rel="noreferrer">source 2</a><small>weak_or_marketing_only_evidence</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_now" data-category="AI, Research and Media-native" data-search="fathom ai, research and media-native api key oauth2 meeting data permissions, workspace scope, and rate limits need careful modeling. not_found">
           <td>93</td>
-          <td><b>Fathom</b><small>AI meeting recorder and notes product for calls, summaries, action items, and syncs.</small></td>
+          <td><b>Fathom</b><small>AI meeting recorder and notes product for calls, summaries, transcripts, action items, and syncs.</small></td>
           <td>AI, Research and Media-native</td>
-          <td>OAuth2, API token</td>
-          <td>Partner/sales gated</td>
-          <td>Limited public API</td>
-          <td><span class="pill needs_outreach">Needs outreach</span></td>
-          <td>Broad public developer docs and self-serve credentials are not clearly available.</td>
+          <td>API key, OAuth2</td>
+          <td>Self-serve</td>
+          <td>Broad public API</td>
+          <td><span class="pill ready_now">Ready now</span></td>
+          <td>Meeting data permissions, workspace scope, and rate limits need careful modeling.</td>
           <td>not_found</td>
-          <td><a href="https://fathom.video/" target="_blank" rel="noreferrer">source 1</a> <a href="https://fathom.video/integrations" target="_blank" rel="noreferrer">source 2</a><small>weak_or_marketing_only_evidence, low_confidence_requires_refresh</small></td>
+          <td><a href="https://developers.fathom.ai/" target="_blank" rel="noreferrer">source 1</a> <a href="https://developers.fathom.ai/api-overview" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="needs_outreach" data-category="AI, Research and Media-native">
+        <tr data-verdict="needs_outreach" data-category="AI, Research and Media-native" data-search="consensus ai, research and media-native oauth2 oauth/api access appears request-based rather than self-serve public docs. not_found">
           <td>94</td>
           <td><b>Consensus</b><small>AI academic-search product for querying research papers and evidence.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1690,7 +1798,7 @@
           <td>not_found</td>
           <td><a href="https://consensus.app/" target="_blank" rel="noreferrer">source 1</a> <a href="https://consensus.app/home/api/" target="_blank" rel="noreferrer">source 2</a><small>low_confidence_requires_refresh</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_now" data-category="AI, Research and Media-native" data-search="reducto ai, research and media-native api key main work is file handling, async processing, and cost controls. supported">
           <td>95</td>
           <td><b>Reducto</b><small>Document parsing API for extracting structured data from PDFs and complex documents.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1702,7 +1810,7 @@
           <td>supported<small>reducto</small></td>
           <td><a href="https://docs.reducto.ai/" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.reducto.ai/api-reference/introduction" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native" data-search="devin ai, research and media-native api token mcp auth requires customer account access and careful task-permission boundaries. partial_or_adjacent">
           <td>96</td>
           <td><b>Devin</b><small>AI software engineering agent with API and MCP surfaces for tasks and development workflows.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1712,9 +1820,9 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>Requires customer account access and careful task-permission boundaries.</td>
           <td>partial_or_adjacent</td>
-          <td><a href="https://docs.devin.ai/api-reference/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.devin.ai/mcp/overview" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
+          <td><a href="https://docs.devin.ai/api-reference/overview" target="_blank" rel="noreferrer">source 1</a> <a href="https://docs.devin.ai/work-with-devin/devin-mcp" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native" data-search="higgsfield ai, research and media-native api key cli auth public api and credential story appears cli/product-led rather than mature connector docs. not_found">
           <td>97</td>
           <td><b>higgsfield</b><small>AI media/content creation suite with CLI-oriented workflows.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1726,7 +1834,7 @@
           <td>not_found</td>
           <td><a href="https://higgsfield.ai/cli" target="_blank" rel="noreferrer">source 1</a> <a href="https://higgsfield.ai/" target="_blank" rel="noreferrer">source 2</a><small>weak_or_marketing_only_evidence, low_confidence_requires_refresh, unclear_credential_access</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_now" data-category="AI, Research and Media-native" data-search="mermaid cli ai, research and media-native none this is a local cli tool, so the connector is process execution rather than saas auth. partial_or_adjacent">
           <td>98</td>
           <td><b>Mermaid CLI</b><small>Open-source CLI for rendering Mermaid diagrams to images and PDFs.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1738,7 +1846,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://github.com/mermaid-js/mermaid-cli" target="_blank" rel="noreferrer">source 1</a><small>clean</small></td>
         </tr>
-        <tr data-verdict="ready_now" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_now" data-category="AI, Research and Media-native" data-search="youtube transcript ai, research and media-native api key narrow, single-purpose api with dependency on transcript availability. partial_or_adjacent">
           <td>99</td>
           <td><b>YouTube Transcript</b><small>Transcript extraction API for YouTube video captions and text.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1750,7 +1858,7 @@
           <td>partial_or_adjacent</td>
           <td><a href="https://www.transcriptapi.com/docs" target="_blank" rel="noreferrer">source 1</a><small>ready_now_without_high_confidence</small></td>
         </tr>
-        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native">
+        <tr data-verdict="ready_with_limits" data-category="AI, Research and Media-native" data-search="grain ai, research and media-native oauth2 api key api access and meeting data permissions depend on customer/admin plan. not_found">
           <td>100</td>
           <td><b>Grain</b><small>Meeting recording, transcription, clips, and notes platform for customer calls.</small></td>
           <td>AI, Research and Media-native</td>
@@ -1760,7 +1868,7 @@
           <td><span class="pill ready_with_limits">Ready with limits</span></td>
           <td>API access and meeting data permissions depend on customer/admin plan.</td>
           <td>not_found</td>
-          <td><a href="https://grain.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://grain.com/api" target="_blank" rel="noreferrer">source 2</a><small>low_confidence_requires_refresh</small></td>
+          <td><a href="https://developers.grain.com/" target="_blank" rel="noreferrer">source 1</a> <a href="https://support.grain.com/en/articles/15507288-grain-api" target="_blank" rel="noreferrer">source 2</a><small>clean</small></td>
         </tr></tbody>
         </table>
       </div>
@@ -1774,15 +1882,35 @@
   <script>
     const buttons = Array.from(document.querySelectorAll("[data-filter]"));
     const rows = Array.from(document.querySelectorAll(".research-table tbody tr"));
+    const search = document.querySelector("#table-search");
+    const category = document.querySelector("#category-filter");
+    const categories = Array.from(new Set(rows.map((row) => row.dataset.category))).sort();
+    categories.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      category.appendChild(option);
+    });
+    let activeVerdict = "all";
+    function applyFilters() {
+      const query = (search.value || "").trim().toLowerCase();
+      const activeCategory = category.value;
+      rows.forEach((row) => {
+        const verdictMatch = activeVerdict === "all" || row.dataset.verdict === activeVerdict;
+        const categoryMatch = activeCategory === "all" || row.dataset.category === activeCategory;
+        const searchMatch = !query || row.dataset.search.includes(query);
+        row.style.display = verdictMatch && categoryMatch && searchMatch ? "" : "none";
+      });
+    }
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
+        activeVerdict = button.dataset.filter;
         buttons.forEach((item) => item.classList.toggle("active", item === button));
-        rows.forEach((row) => {
-          row.style.display = filter === "all" || row.dataset.verdict === filter ? "" : "none";
-        });
+        applyFilters();
       });
     });
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
   </script>
 </body>
 </html>

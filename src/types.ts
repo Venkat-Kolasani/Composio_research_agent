@@ -31,7 +31,7 @@ export type AppSeed = {
   hint: string;
 };
 
-export type ResearchSeed = {
+export type ResearchEvidence = {
   oneLineDescription: string;
   authMethods: string[];
   credentialAccess: CredentialAccess;
@@ -50,7 +50,7 @@ export type ComposioToolkitMatch = {
 };
 
 export type AppResearch = AppSeed &
-  ResearchSeed & {
+  ResearchEvidence & {
     evidenceQuality: "official_docs" | "mixed" | "weak";
     composioToolkit: ComposioToolkitMatch;
     humanReviewed: boolean;

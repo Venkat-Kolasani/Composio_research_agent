@@ -106,7 +106,7 @@
     "mainBlocker": "Need careful schema handling because records and lists are highly customizable.",
     "evidenceUrls": [
       "https://docs.attio.com/rest-api/overview",
-      "https://docs.attio.com/rest-api/authentication"
+      "https://docs.attio.com/rest-api/guides/authentication"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -262,7 +262,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -313,7 +313,7 @@
     "mainBlocker": "Large API surface needs staged coverage and permission-sensitive write actions.",
     "evidenceUrls": [
       "https://developer.zendesk.com/api-reference/",
-      "https://developer.zendesk.com/documentation/ticketing/using-the-zendesk-api/oauth-authentication-with-zendesk/"
+      "https://developer.zendesk.com/documentation/api-basics/authentication/creating-and-using-oauth-tokens-with-the-api/"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -372,8 +372,7 @@
     "buildability": "ready_now",
     "mainBlocker": "Domain-specific tenant URLs and API-key security need clean onboarding.",
     "evidenceUrls": [
-      "https://developers.freshdesk.com/api/",
-      "https://developers.freshworks.com/docs/app-sdk/v3.0/freshdesk/serverless-apps/oauth/"
+      "https://developers.freshdesk.com/api/"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -438,7 +437,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -458,14 +457,15 @@
     "buildability": "ready_now",
     "mainBlocker": "Instance URL and account-specific permissions must be captured.",
     "evidenceUrls": [
-      "https://support.liveagent.com/965412-API"
+      "https://support.liveagent.com/802463-REST-API",
+      "https://support.liveagent.com/840770-Complete-API-reference"
     ],
     "confidence": "medium",
     "mcpStatus": "community_mcp_possible",
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -487,8 +487,8 @@
     "buildability": "ready_now",
     "mainBlocker": "GraphQL schema coverage and mutation guardrails are the main work.",
     "evidenceUrls": [
-      "https://www.plain.com/docs/api-reference/graphql/overview",
-      "https://www.plain.com/docs/api-reference/graphql/authentication"
+      "https://www.plain.com/docs/graphql/introduction",
+      "https://www.plain.com/docs/graphql/authentication"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -547,7 +547,7 @@
     "mainBlocker": "API access is tied to customer/admin accounts and ecommerce context.",
     "evidenceUrls": [
       "https://developers.gorgias.com/reference/introduction",
-      "https://developers.gorgias.com/docs/oauth2"
+      "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -582,7 +582,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": true,
     "verified": true,
@@ -672,7 +672,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -702,7 +702,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -729,7 +729,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -879,7 +879,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -930,7 +930,7 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "Business verification, app review, permissions, and ad-account access.",
     "evidenceUrls": [
-      "https://developers.facebook.com/docs/marketing-apis/",
+      "https://developers.facebook.com/docs/marketing-api/",
       "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/"
     ],
     "confidence": "high",
@@ -1086,7 +1086,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1144,7 +1144,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1292,7 +1292,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1315,14 +1315,14 @@
     "mainBlocker": "Self-hosted versions and store customizations create schema/version variance.",
     "evidenceUrls": [
       "https://developer.adobe.com/commerce/webapi/rest/",
-      "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/"
+      "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1351,7 +1351,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1380,7 +1380,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1408,7 +1408,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1466,7 +1466,7 @@
     "evidenceQuality": "weak",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": true,
     "verified": false,
@@ -1518,14 +1518,14 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "Requires a paid account/API entitlement for practical use.",
     "evidenceUrls": [
-      "https://seranking.com/api.html"
+      "https://www.postman.com/serankingdev/se-ranking-developers/overview"
     ],
     "confidence": "medium",
     "mcpStatus": "community_mcp_possible",
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -1545,7 +1545,7 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "API access is plan/credit gated and expensive enough to require commercial alignment.",
     "evidenceUrls": [
-      "https://docs.ahrefs.com/docs/api/site-explorer/overview",
+      "https://docs.ahrefs.com/",
       "https://ahrefs.com/api"
     ],
     "confidence": "medium",
@@ -1662,8 +1662,8 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "Paid account, compliance controls, and proxy/data product selection.",
     "evidenceUrls": [
-      "https://docs.brightdata.com/api-reference/introduction",
-      "https://docs.brightdata.com/general/account/api-token"
+      "https://docs.brightdata.com/api-reference/authentication",
+      "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api"
     ],
     "confidence": "high",
     "mcpStatus": "community_mcp_possible",
@@ -1725,7 +1725,7 @@
     "evidenceQuality": "weak",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": true,
     "verified": false,
@@ -1749,7 +1749,7 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "Public API coverage and credits are plan-dependent.",
     "evidenceUrls": [
-      "https://docs.clay.com/en/articles/9672481-clay-api",
+      "https://university.clay.com/docs/http-api-integration-overview",
       "https://www.clay.com/"
     ],
     "confidence": "medium",
@@ -1933,7 +1933,7 @@
     "mainBlocker": "Agent toolkit should separate Aura admin APIs from graph query execution.",
     "evidenceUrls": [
       "https://neo4j.com/docs/aura/platform/api/overview/",
-      "https://neo4j.com/docs/api/"
+      "https://neo4j.com/docs/operations-manual/current/authentication-authorization/"
     ],
     "confidence": "medium",
     "mcpStatus": "community_mcp_possible",
@@ -2361,7 +2361,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -2478,7 +2478,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": true,
     "verified": false,
@@ -2507,7 +2507,7 @@
     "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -2589,7 +2589,7 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "Business account/admin access and financial data controls.",
     "evidenceUrls": [
-      "https://developer.brex.com/openapi",
+      "https://developer.brex.com/",
       "https://developer.brex.com/docs/authentication/"
     ],
     "confidence": "high",
@@ -2657,7 +2657,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": true,
@@ -2686,7 +2686,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": true,
     "verified": true,
@@ -2715,7 +2715,7 @@
     "evidenceQuality": "weak",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -2728,32 +2728,29 @@
     "app": "Fathom",
     "category": "AI, Research and Media-native",
     "hint": "fathom.video",
-    "oneLineDescription": "AI meeting recorder and notes product for calls, summaries, action items, and syncs.",
+    "oneLineDescription": "AI meeting recorder and notes product for calls, summaries, transcripts, action items, and syncs.",
     "authMethods": [
-      "OAuth2",
-      "API token"
+      "API key",
+      "OAuth2"
     ],
-    "credentialAccess": "partner_or_sales_gated",
-    "apiSurface": "limited_public_api",
-    "buildability": "needs_outreach",
-    "mainBlocker": "Broad public developer docs and self-serve credentials are not clearly available.",
+    "credentialAccess": "self_serve",
+    "apiSurface": "broad_public_api",
+    "buildability": "ready_now",
+    "mainBlocker": "Meeting data permissions, workspace scope, and rate limits need careful modeling.",
     "evidenceUrls": [
-      "https://fathom.video/",
-      "https://fathom.video/integrations"
+      "https://developers.fathom.ai/",
+      "https://developers.fathom.ai/api-overview"
     ],
-    "confidence": "low",
+    "confidence": "high",
     "mcpStatus": "none_found",
-    "evidenceQuality": "weak",
+    "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
-    "verified": false,
-    "flags": [
-      "weak_or_marketing_only_evidence",
-      "low_confidence_requires_refresh"
-    ]
+    "verified": true,
+    "flags": []
   },
   {
     "id": 94,
@@ -2777,7 +2774,7 @@
     "evidenceQuality": "mixed",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -2830,7 +2827,7 @@
     "mainBlocker": "Requires customer account access and careful task-permission boundaries.",
     "evidenceUrls": [
       "https://docs.devin.ai/api-reference/overview",
-      "https://docs.devin.ai/mcp/overview"
+      "https://docs.devin.ai/work-with-devin/devin-mcp"
     ],
     "confidence": "high",
     "mcpStatus": "official_or_vendor_mcp",
@@ -2866,7 +2863,7 @@
     "evidenceQuality": "weak",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
     "verified": false,
@@ -2947,20 +2944,18 @@
     "buildability": "ready_with_limits",
     "mainBlocker": "API access and meeting data permissions depend on customer/admin plan.",
     "evidenceUrls": [
-      "https://grain.com/",
-      "https://grain.com/api"
+      "https://developers.grain.com/",
+      "https://support.grain.com/en/articles/15507288-grain-api"
     ],
-    "confidence": "low",
+    "confidence": "medium",
     "mcpStatus": "none_found",
-    "evidenceQuality": "mixed",
+    "evidenceQuality": "official_docs",
     "composioToolkit": {
       "status": "not_found",
-      "note": "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+      "note": "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
     },
     "humanReviewed": false,
-    "verified": false,
-    "flags": [
-      "low_confidence_requires_refresh"
-    ]
+    "verified": true,
+    "flags": []
   }
 ]

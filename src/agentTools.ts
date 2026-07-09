@@ -1,5 +1,5 @@
-import type { AppResearch, AppSeed, ResearchSeed } from "./types.js";
-import { lookupComposioToolkit } from "./composioToolkitSeed.js";
+import type { AppResearch, AppSeed, ResearchEvidence } from "./types.js";
+import { lookupComposioToolkit } from "./composioToolkitCatalog.js";
 
 export type AgentToolDefinition = {
   name: string;
@@ -59,13 +59,13 @@ export function verifyEvidence(row: Pick<AppResearch, "evidenceUrls" | "buildabi
   return { verified: flags.length === 0, flags };
 }
 
-export function classifyConnector(app: AppSeed, seed: ResearchSeed): AppResearch {
-  const quality = evidenceQuality(seed.evidenceUrls);
-  const verification = verifyEvidence(seed);
+export function classifyConnector(app: AppSeed, evidence: ResearchEvidence): AppResearch {
+  const quality = evidenceQuality(evidence.evidenceUrls);
+  const verification = verifyEvidence(evidence);
 
   return {
     ...app,
-    ...seed,
+    ...evidence,
     evidenceQuality: quality,
     composioToolkit: lookupComposioToolkit(app.app),
     humanReviewed: false,

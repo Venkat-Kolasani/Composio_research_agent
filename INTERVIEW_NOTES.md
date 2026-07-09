@@ -9,7 +9,7 @@ I treated the assignment as an operations system, not a spreadsheet. The agent t
 - **TypeScript:** closest fit for Composio SDK examples, Vercel deployment, and readable production-style automation.
 - **Generated page:** the HTML page is built from JSON artifacts so the presentation cannot drift from the research data.
 - **Composio SDK plus MCP:** the SDK is best for custom tools and execution hooks; MCP is best as a portable proof that the same session can expose hosted tools to MCP-native clients.
-- **Seeded fallback:** external web/LLM access can be flaky in take-home review environments, so the pipeline has deterministic fallback data and records confidence instead of pretending everything was live.
+- **Curated evidence catalog:** each row is generated from official docs and product evidence, with confidence and verification flags instead of unsupported claims.
 
 ## Where A Human Was Needed
 

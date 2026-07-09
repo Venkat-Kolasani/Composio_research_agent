@@ -1,8 +1,8 @@
-import type { ResearchSeed } from "./types.js";
+import type { ResearchEvidence } from "./types.js";
 
 const docs = (url: string, extra?: string) => (extra ? [url, extra] : [url]);
 
-export const researchSeeds: Record<string, ResearchSeed> = {
+export const evidenceCatalog: Record<string, ResearchEvidence> = {
   Salesforce: {
     oneLineDescription: "Enterprise CRM platform for accounts, leads, opportunities, service, and custom objects.",
     authMethods: ["OAuth2", "JWT bearer", "session token"],
@@ -43,7 +43,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "Need careful schema handling because records and lists are highly customizable.",
-    evidenceUrls: docs("https://docs.attio.com/rest-api/overview", "https://docs.attio.com/rest-api/authentication"),
+    evidenceUrls: docs("https://docs.attio.com/rest-api/overview", "https://docs.attio.com/rest-api/guides/authentication"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -120,7 +120,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "Large API surface needs staged coverage and permission-sensitive write actions.",
-    evidenceUrls: docs("https://developer.zendesk.com/api-reference/", "https://developer.zendesk.com/documentation/ticketing/using-the-zendesk-api/oauth-authentication-with-zendesk/"),
+    evidenceUrls: docs("https://developer.zendesk.com/api-reference/", "https://developer.zendesk.com/documentation/api-basics/authentication/creating-and-using-oauth-tokens-with-the-api/"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -142,7 +142,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "Domain-specific tenant URLs and API-key security need clean onboarding.",
-    evidenceUrls: docs("https://developers.freshdesk.com/api/", "https://developers.freshworks.com/docs/app-sdk/v3.0/freshdesk/serverless-apps/oauth/"),
+    evidenceUrls: docs("https://developers.freshdesk.com/api/"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -175,7 +175,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "Instance URL and account-specific permissions must be captured.",
-    evidenceUrls: docs("https://support.liveagent.com/965412-API"),
+    evidenceUrls: docs("https://support.liveagent.com/802463-REST-API", "https://support.liveagent.com/840770-Complete-API-reference"),
     confidence: "medium",
     mcpStatus: "community_mcp_possible"
   },
@@ -186,7 +186,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "GraphQL schema coverage and mutation guardrails are the main work.",
-    evidenceUrls: docs("https://www.plain.com/docs/api-reference/graphql/overview", "https://www.plain.com/docs/api-reference/graphql/authentication"),
+    evidenceUrls: docs("https://www.plain.com/docs/graphql/introduction", "https://www.plain.com/docs/graphql/authentication"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -208,7 +208,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "API access is tied to customer/admin accounts and ecommerce context.",
-    evidenceUrls: docs("https://developers.gorgias.com/reference/introduction", "https://developers.gorgias.com/docs/oauth2"),
+    evidenceUrls: docs("https://developers.gorgias.com/reference/introduction", "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -351,7 +351,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Business verification, app review, permissions, and ad-account access.",
-    evidenceUrls: docs("https://developers.facebook.com/docs/marketing-apis/", "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/"),
+    evidenceUrls: docs("https://developers.facebook.com/docs/marketing-api/", "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -494,7 +494,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_now",
     mainBlocker: "Self-hosted versions and store customizations create schema/version variance.",
-    evidenceUrls: docs("https://developer.adobe.com/commerce/webapi/rest/", "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/"),
+    evidenceUrls: docs("https://developer.adobe.com/commerce/webapi/rest/", "https://developer.adobe.com/commerce/webapi/get-started/authentication/"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -571,7 +571,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Requires a paid account/API entitlement for practical use.",
-    evidenceUrls: docs("https://seranking.com/api.html"),
+    evidenceUrls: docs("https://www.postman.com/serankingdev/se-ranking-developers/overview"),
     confidence: "medium",
     mcpStatus: "community_mcp_possible"
   },
@@ -582,7 +582,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "API access is plan/credit gated and expensive enough to require commercial alignment.",
-    evidenceUrls: docs("https://docs.ahrefs.com/docs/api/site-explorer/overview", "https://ahrefs.com/api"),
+    evidenceUrls: docs("https://docs.ahrefs.com/", "https://ahrefs.com/api"),
     confidence: "medium",
     mcpStatus: "community_mcp_possible"
   },
@@ -626,7 +626,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Paid account, compliance controls, and proxy/data product selection.",
-    evidenceUrls: docs("https://docs.brightdata.com/api-reference/introduction", "https://docs.brightdata.com/general/account/api-token"),
+    evidenceUrls: docs("https://docs.brightdata.com/api-reference/authentication", "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -659,7 +659,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "limited_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Public API coverage and credits are plan-dependent.",
-    evidenceUrls: docs("https://docs.clay.com/en/articles/9672481-clay-api", "https://www.clay.com/"),
+    evidenceUrls: docs("https://university.clay.com/docs/http-api-integration-overview", "https://www.clay.com/"),
     confidence: "medium",
     mcpStatus: "community_mcp_possible"
   },
@@ -725,7 +725,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "limited_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Agent toolkit should separate Aura admin APIs from graph query execution.",
-    evidenceUrls: docs("https://neo4j.com/docs/aura/platform/api/overview/", "https://neo4j.com/docs/api/"),
+    evidenceUrls: docs("https://neo4j.com/docs/aura/platform/api/overview/", "https://neo4j.com/docs/operations-manual/current/authentication-authorization/"),
     confidence: "medium",
     mcpStatus: "community_mcp_possible"
   },
@@ -967,7 +967,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "broad_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "Business account/admin access and financial data controls.",
-    evidenceUrls: docs("https://developer.brex.com/openapi", "https://developer.brex.com/docs/authentication/"),
+    evidenceUrls: docs("https://developer.brex.com/", "https://developer.brex.com/docs/authentication/"),
     confidence: "high",
     mcpStatus: "community_mcp_possible"
   },
@@ -1016,14 +1016,14 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     mcpStatus: "official_or_vendor_mcp"
   },
   Fathom: {
-    oneLineDescription: "AI meeting recorder and notes product for calls, summaries, action items, and syncs.",
-    authMethods: ["OAuth2", "API token"],
-    credentialAccess: "partner_or_sales_gated",
-    apiSurface: "limited_public_api",
-    buildability: "needs_outreach",
-    mainBlocker: "Broad public developer docs and self-serve credentials are not clearly available.",
-    evidenceUrls: docs("https://fathom.video/", "https://fathom.video/integrations"),
-    confidence: "low",
+    oneLineDescription: "AI meeting recorder and notes product for calls, summaries, transcripts, action items, and syncs.",
+    authMethods: ["API key", "OAuth2"],
+    credentialAccess: "self_serve",
+    apiSurface: "broad_public_api",
+    buildability: "ready_now",
+    mainBlocker: "Meeting data permissions, workspace scope, and rate limits need careful modeling.",
+    evidenceUrls: docs("https://developers.fathom.ai/", "https://developers.fathom.ai/api-overview"),
+    confidence: "high",
     mcpStatus: "none_found"
   },
   Consensus: {
@@ -1055,7 +1055,7 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "mcp_available",
     buildability: "ready_with_limits",
     mainBlocker: "Requires customer account access and careful task-permission boundaries.",
-    evidenceUrls: docs("https://docs.devin.ai/api-reference/overview", "https://docs.devin.ai/mcp/overview"),
+    evidenceUrls: docs("https://docs.devin.ai/api-reference/overview", "https://docs.devin.ai/work-with-devin/devin-mcp"),
     confidence: "high",
     mcpStatus: "official_or_vendor_mcp"
   },
@@ -1099,8 +1099,8 @@ export const researchSeeds: Record<string, ResearchSeed> = {
     apiSurface: "limited_public_api",
     buildability: "ready_with_limits",
     mainBlocker: "API access and meeting data permissions depend on customer/admin plan.",
-    evidenceUrls: docs("https://grain.com/", "https://grain.com/api"),
-    confidence: "low",
+    evidenceUrls: docs("https://developers.grain.com/", "https://support.grain.com/en/articles/15507288-grain-api"),
+    confidence: "medium",
     mcpStatus: "none_found"
   }
 };

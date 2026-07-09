@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-09T08:16:58.110Z",
-  "mode": "seeded_research_with_composio_ready_tool_manifest",
+  "generatedAt": "2026-07-09T08:52:51.946Z",
+  "mode": "curated_evidence_catalog_with_composio_ready_tool_manifest",
   "agentTools": [
     {
       "name": "FIND_OFFICIAL_DOCS",
@@ -34,10 +34,8 @@
     "Waterfall.io",
     "Paygent Connect",
     "iPayX",
-    "Fathom",
     "Consensus",
-    "higgsfield",
-    "Grain"
+    "higgsfield"
   ],
-  "note": "This deterministic run mirrors the intended agent contract. Add search/LLM keys to replace or refresh seeded evidence before production use."
+  "note": "Rows are generated from a curated evidence catalog with official docs URLs. Add search/LLM keys to refresh evidence before future production use."
 }

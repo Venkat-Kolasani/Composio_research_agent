@@ -8,11 +8,14 @@
     "parse": "tsx src/parseAssignment.ts",
     "research": "tsx src/research.ts",
     "verify": "tsx src/verify.ts",
+    "verify:requirements": "tsx src/verifyRequirements.ts",
+    "verify:urls": "tsx src/verifyEvidenceUrls.ts",
     "build": "npm run build:site",
     "build:site": "tsx src/buildSite.ts",
     "proof:mcp": "tsx src/proofMcp.ts",
     "check": "tsc --noEmit",
-    "all": "npm run parse && npm run research && npm run verify && npm run build:site"
+    "all": "npm run parse && npm run research && npm run verify && npm run build:site && npm run verify:requirements && npm run build:site",
+    "audit": "npm run parse && npm run research && npm run verify && npm run build:site && npm run verify:requirements && npm run verify:urls && npm run build:site && npm run verify:requirements && npm run check"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^2.0.9",

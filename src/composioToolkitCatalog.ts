@@ -113,6 +113,6 @@ export function lookupComposioToolkit(app: string): ComposioToolkitMatch {
 
   return {
     status: "not_found",
-    note: "No obvious toolkit match in the seeded Composio coverage map; treat as a net-new or outreach candidate."
+    note: "No obvious toolkit match in the curated Composio coverage map; treat as a net-new or outreach candidate."
   };
 }

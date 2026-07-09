@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-07-09T08:18:41.447Z",
+  "generatedAt": "2026-07-09T08:52:52.126Z",
   "totalApps": 100,
   "byBuildability": {
-    "ready_now": 57,
+    "ready_now": 58,
     "ready_with_limits": 31,
-    "needs_outreach": 10,
+    "needs_outreach": 9,
     "not_buildable_today": 2
   },
   "byCredentialAccess": {
-    "self_serve": 63,
+    "self_serve": 64,
     "paid_or_admin_gated": 24,
-    "partner_or_sales_gated": 10,
+    "partner_or_sales_gated": 9,
     "unclear": 3
   },
   "byApiSurface": {
-    "broad_public_api": 73,
-    "limited_public_api": 18,
+    "broad_public_api": 74,
+    "limited_public_api": 17,
     "private_or_no_public_api": 5,
     "mcp_available": 4
   },
@@ -75,16 +75,16 @@
       "not_buildable_today": 0
     },
     "AI, Research and Media-native": {
-      "ready_now": 3,
+      "ready_now": 4,
       "ready_with_limits": 4,
-      "needs_outreach": 2,
+      "needs_outreach": 1,
       "not_buildable_today": 1
     }
   },
   "topBlockers": [
     {
       "blocker": "Schema or safety complexity",
-      "count": 27
+      "count": 28
     },
     {
       "blocker": "Paid/admin account gate",
@@ -108,7 +108,7 @@
     },
     {
       "blocker": "No clear public API",
-      "count": 2
+      "count": 1
     }
   ],
   "composioCoverage": {
@@ -118,7 +118,7 @@
     "unknown": 0
   },
   "verification": {
-    "issueCount": 22,
+    "issueCount": 19,
     "auditedApps": 20,
     "firstPassAccuracy": 0.7,
     "finalAuditedAccuracy": 1

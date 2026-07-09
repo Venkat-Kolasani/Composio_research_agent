@@ -9,6 +9,18 @@ type VerificationFile = {
   issues: Array<{ app: string; severity: string; issue: string }>;
 };
 
+type RequirementReport = {
+  status: "pass" | "fail";
+  checks: Array<{ id: string; status: "pass" | "fail"; detail: string }>;
+};
+
+type EvidenceUrlReport = {
+  totalEvidenceUrls: number;
+  reachableOrBlockedCount: number;
+  hardFailureCount: number;
+  statusCounts: Record<string, number>;
+};
+
 const buildabilityOrder: Buildability[] = [
   "ready_now",
   "ready_with_limits",
@@ -35,6 +47,14 @@ async function optionalText(filePath: string) {
     return await readFile(filePath, "utf8");
   } catch {
     return "";
+  }
+}
+
+async function optionalJson<T>(filePath: string): Promise<T | null> {
+  try {
+    return await readJson<T>(filePath);
+  } catch {
+    return null;
   }
 }
 
@@ -123,6 +143,83 @@ function renderPatternBars(summary: Summary) {
     </div>`;
 }
 
+function renderDecisionLanes(summary: Summary) {
+  const lanes = [
+    {
+      title: "Ship First",
+      value: summary.byBuildability.ready_now,
+      body: "Self-serve, broad APIs. Best candidates for immediate toolkit work.",
+      className: "ready_now"
+    },
+    {
+      title: "Build With Guardrails",
+      value: summary.byBuildability.ready_with_limits,
+      body: "Useful APIs with app review, admin setup, limited scope, or safety constraints.",
+      className: "ready_with_limits"
+    },
+    {
+      title: "Partner Ops Queue",
+      value: summary.byBuildability.needs_outreach,
+      body: "Access is the blocker. These need approvals, sales contacts, or vendor partnership motion.",
+      className: "needs_outreach"
+    },
+    {
+      title: "Defer",
+      value: summary.byBuildability.not_buildable_today,
+      body: "No reliable public API route for an agent toolkit today.",
+      className: "not_buildable_today"
+    }
+  ];
+
+  return `
+    <div class="lane-grid">
+      ${lanes
+        .map(
+          (lane) => `
+            <article class="lane">
+              <span class="pill ${lane.className}">${lane.title}</span>
+              <strong>${lane.value}</strong>
+              <p>${lane.body}</p>
+            </article>`
+        )
+        .join("")}
+    </div>`;
+}
+
+function renderQualityGates(requirements: RequirementReport | null, evidenceUrls: EvidenceUrlReport | null, verification: VerificationFile) {
+  const requirementPassed = requirements?.checks.filter((item) => item.status === "pass").length ?? 0;
+  const requirementTotal = requirements?.checks.length ?? 0;
+  const requirementLabel = requirements ? `${requirementPassed}/${requirementTotal} checks passed` : "Run npm run verify:requirements";
+  const evidenceLabel = evidenceUrls
+    ? `${evidenceUrls.reachableOrBlockedCount}/${evidenceUrls.totalEvidenceUrls} evidence URLs reachable or intentionally blocked`
+    : "Run npm run verify:urls";
+  const issueLabel = `${verification.issues.length} verifier flags retained for review`;
+
+  return `
+    <div class="quality-grid">
+      <article class="quality-card">
+        <span>Assignment Readiness</span>
+        <strong>${escapeHtml(requirementLabel)}</strong>
+        <p>${requirements?.status === "pass" ? "Schema, required sections, table rows, and public language checks passed." : "Requirement report is pending or failing."}</p>
+      </article>
+      <article class="quality-card">
+        <span>Evidence Health</span>
+        <strong>${escapeHtml(evidenceLabel)}</strong>
+        <p>${evidenceUrls ? `${evidenceUrls.hardFailureCount} hard URL failures recorded for follow-up.` : "URL reachability report is not generated yet."}</p>
+      </article>
+      <article class="quality-card">
+        <span>Human Audit</span>
+        <strong>${verification.auditRecords.length} apps sampled</strong>
+        <p>Audit spans all 10 categories and includes ambiguous or gated vendors.</p>
+      </article>
+      <article class="quality-card">
+        <span>Open Review Queue</span>
+        <strong>${escapeHtml(issueLabel)}</strong>
+        <p>Flags are visible so low-confidence rows become ops follow-ups, not hidden assumptions.</p>
+      </article>
+    </div>`;
+}
+
 function renderWorkflow() {
   const tools = agentToolManifest
     .map(
@@ -172,7 +269,9 @@ function renderResearchRows(rows: AppResearch[]) {
         .join(" ");
       const flags = row.flags.length ? row.flags.join(", ") : "clean";
       return `
-        <tr data-verdict="${row.buildability}" data-category="${escapeHtml(row.category)}">
+        <tr data-verdict="${row.buildability}" data-category="${escapeHtml(row.category)}" data-search="${escapeHtml(
+          `${row.app} ${row.category} ${row.authMethods.join(" ")} ${row.mainBlocker} ${row.composioToolkit.status}`.toLowerCase()
+        )}">
           <td>${row.id}</td>
           <td><b>${escapeHtml(row.app)}</b><small>${escapeHtml(row.oneLineDescription)}</small></td>
           <td>${escapeHtml(row.category)}</td>
@@ -190,13 +289,26 @@ function renderResearchRows(rows: AppResearch[]) {
 
 function renderFilterButtons() {
   return `
-    <div class="filters" aria-label="Research table filters">
-      <button data-filter="all" class="active">All</button>
-      ${buildabilityOrder.map((key) => `<button data-filter="${key}">${buildabilityLabels[key]}</button>`).join("")}
+    <div class="table-controls">
+      <input id="table-search" type="search" placeholder="Search app, category, auth, blocker..." aria-label="Search research table">
+      <select id="category-filter" aria-label="Filter by category">
+        <option value="all">All categories</option>
+      </select>
+      <div class="filters" aria-label="Research table filters">
+        <button data-filter="all" class="active">All</button>
+        ${buildabilityOrder.map((key) => `<button data-filter="${key}">${buildabilityLabels[key]}</button>`).join("")}
+      </div>
     </div>`;
 }
 
-function renderHtml(rows: AppResearch[], summary: Summary, verification: VerificationFile, mcpProof: string) {
+function renderHtml(
+  rows: AppResearch[],
+  summary: Summary,
+  verification: VerificationFile,
+  requirements: RequirementReport | null,
+  evidenceUrls: EvidenceUrlReport | null,
+  mcpProof: string
+) {
   const easyWins = summary.byBuildability.ready_now;
   const gated = summary.byCredentialAccess.paid_or_admin_gated + summary.byCredentialAccess.partner_or_sales_gated;
   const firstPassPct = Math.round(summary.verification.firstPassAccuracy * 100);
@@ -216,6 +328,7 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
       --line: #dce4dd;
       --bg: #f7f8f4;
       --paper: #ffffff;
+      --paper-2: #fdfefb;
       --green: #1e7f5c;
       --blue: #2a62b7;
       --amber: #ae6f18;
@@ -235,14 +348,15 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     header {
-      min-height: 74vh;
+      min-height: 64vh;
       display: grid;
       align-items: end;
       padding: 56px max(24px, 6vw) 32px;
       background:
         linear-gradient(115deg, rgba(23,32,25,.94), rgba(23,32,25,.72)),
         radial-gradient(circle at 78% 22%, rgba(255,255,255,.3), transparent 22%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.1) 0 1px, transparent 1px 96px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.1) 0 1px, transparent 1px 92px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 72px),
         linear-gradient(135deg, #1e7f5c, #2a62b7 56%, #ae6f18);
       color: white;
     }
@@ -282,7 +396,7 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
       position: relative;
       z-index: 1;
     }
-    .metric, .panel, .tool-grid article {
+    .metric, .panel, .tool-grid article, .lane, .quality-card {
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -292,6 +406,26 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     .metric strong { display: block; font-size: 42px; line-height: 1; }
     .metric span { display: block; margin-top: 8px; font-weight: 750; }
     .metric p { color: var(--muted); margin: 8px 0 0; }
+    .lane-grid, .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .lane, .quality-card { padding: 16px; min-height: 150px; }
+    .lane strong, .quality-card strong {
+      display: block;
+      margin: 14px 0 8px;
+      font-size: 30px;
+      line-height: 1;
+    }
+    .lane p, .quality-card p { color: var(--muted); margin: 0; }
+    .quality-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
     .insights {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
@@ -331,7 +465,16 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
       overflow: hidden;
     }
     th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    th { font-size: 12px; text-transform: uppercase; color: var(--muted); background: #f1f4ef; }
+    th {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: #f1f4ef;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tbody tr:nth-child(even) { background: var(--paper-2); }
     td small { display: block; color: var(--muted); margin-top: 4px; }
     .matrix th:first-child, .matrix td:first-child { width: 28%; }
     .matrix-count { font-weight: 800; margin-right: 8px; }
@@ -384,7 +527,23 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     .tool-grid article { padding: 14px; }
     .tool-grid b { display: block; margin-bottom: 6px; }
     .tool-grid span { color: var(--muted); }
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    .table-controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(180px, 260px);
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+    }
+    .table-controls input, .table-controls select {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font: inherit;
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; grid-column: 1 / -1; }
     .filters button {
       border: 1px solid var(--line);
       background: white;
@@ -410,9 +569,9 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     }
     footer { max-width: 1220px; margin: 34px auto 0; color: var(--muted); }
     @media (max-width: 900px) {
-      header { min-height: 66vh; padding-inline: 20px; }
+      header { min-height: 58vh; padding-inline: 20px; }
       main { padding-inline: 14px; }
-      .metrics, .insights, .split, .tool-grid { grid-template-columns: 1fr; }
+      .metrics, .insights, .split, .tool-grid, .lane-grid, .quality-grid, .table-controls { grid-template-columns: 1fr; }
       .metrics { margin-top: 0; }
       .workflow { grid-template-columns: 1fr; }
       .workflow-arrow { height: 22px; width: 2px; margin-left: 24px; }
@@ -425,7 +584,7 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     <div>
       <div class="eyebrow">Composio Product Ops Take-Home</div>
       <h1>${easyWins} of 100 apps are agent-toolkit ready today.</h1>
-      <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with deterministic checks plus a human audit sample.</p>
+      <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with repeatable checks, live source checks, and a human audit sample.</p>
       <div class="hero-meta">
         <span>${gated} apps gated by paid, admin, partner, or sales access</span>
         <span>${summary.verification.auditedApps} manually audited apps</span>
@@ -437,6 +596,11 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
 
   <main>
     <section class="metrics">${renderMetricCards(summary)}</section>
+
+    <section>
+      <h2>Decision Lanes</h2>
+      ${renderDecisionLanes(summary)}
+    </section>
 
     <section class="insights">
       <div>
@@ -459,6 +623,11 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
     <section>
       <h2>Patterns</h2>
       ${renderPatternBars(summary)}
+    </section>
+
+    <section>
+      <h2>Data Quality</h2>
+      ${renderQualityGates(requirements, evidenceUrls, verification)}
     </section>
 
     <section>
@@ -502,15 +671,35 @@ function renderHtml(rows: AppResearch[], summary: Summary, verification: Verific
   <script>
     const buttons = Array.from(document.querySelectorAll("[data-filter]"));
     const rows = Array.from(document.querySelectorAll(".research-table tbody tr"));
+    const search = document.querySelector("#table-search");
+    const category = document.querySelector("#category-filter");
+    const categories = Array.from(new Set(rows.map((row) => row.dataset.category))).sort();
+    categories.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      category.appendChild(option);
+    });
+    let activeVerdict = "all";
+    function applyFilters() {
+      const query = (search.value || "").trim().toLowerCase();
+      const activeCategory = category.value;
+      rows.forEach((row) => {
+        const verdictMatch = activeVerdict === "all" || row.dataset.verdict === activeVerdict;
+        const categoryMatch = activeCategory === "all" || row.dataset.category === activeCategory;
+        const searchMatch = !query || row.dataset.search.includes(query);
+        row.style.display = verdictMatch && categoryMatch && searchMatch ? "" : "none";
+      });
+    }
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
+        activeVerdict = button.dataset.filter;
         buttons.forEach((item) => item.classList.toggle("active", item === button));
-        rows.forEach((row) => {
-          row.style.display = filter === "all" || row.dataset.verdict === filter ? "" : "none";
-        });
+        applyFilters();
       });
     });
+    search.addEventListener("input", applyFilters);
+    category.addEventListener("change", applyFilters);
   </script>
 </body>
 </html>`;
@@ -520,8 +709,10 @@ async function main() {
   const rows = await readJson<AppResearch[]>(resolveFromRoot("data", "research.json"));
   const summary = await readJson<Summary>(resolveFromRoot("data", "summary.json"));
   const verification = await readJson<VerificationFile>(resolveFromRoot("data", "verification.json"));
+  const requirements = await optionalJson<RequirementReport>(resolveFromRoot("data", "requirement-checks.json"));
+  const evidenceUrls = await optionalJson<EvidenceUrlReport>(resolveFromRoot("data", "evidence-url-checks.json"));
   const mcpProof = await optionalText(resolveFromRoot("data", "run-logs", "mcp-proof.json"));
-  const html = renderHtml(rows, summary, verification, mcpProof);
+  const html = renderHtml(rows, summary, verification, requirements, evidenceUrls, mcpProof);
   await writeText(resolveFromRoot("site", "index.html"), html);
   console.log("Built site/index.html");
 }
