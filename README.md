@@ -2,6 +2,9 @@
 
 This repo is a runnable take-home submission for Composio's AI Product Ops Intern role. It researches 100 requested apps, classifies their connector buildability, verifies weak claims, and generates a single-page case study.
 
+Live case study: https://composio.venkatkolasani.in  
+Vercel alias: https://composio-research-agent.vercel.app
+
 ## What This Proves
 
 - A repeatable agentic workflow for connector research across 100 apps.
