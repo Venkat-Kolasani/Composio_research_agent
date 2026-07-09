@@ -51,6 +51,7 @@ npm run verify:requirements # Check assignment coverage, schema, page sections, 
 npm run verify:urls # Check evidence URL reachability and write data/evidence-url-checks.json
 npm run build:site  # Build site/index.html from data artifacts
 npm run proof:mcp   # Create a Composio hosted MCP proof artifact, if configured
+npm run review:gemini # Run low-cost Gemini Flash-Lite review, if configured
 npm run all         # Parse, research, verify, and build the site
 npm run audit       # Full local audit: data, requirements, URL checks, and TypeScript
 npm run check       # Type-check scripts
@@ -65,6 +66,7 @@ npm run check       # Type-check scripts
 - `data/requirement-checks.json`: assignment-readiness checks.
 - `data/evidence-url-checks.json`: live evidence URL reachability checks.
 - `data/run-logs/mcp-proof.json`: redacted Composio MCP proof output.
+- `data/run-logs/gemini-review.json`: redacted Gemini Flash-Lite reviewer output, if configured.
 - `site/index.html`: final single-page case study.
 
 ## Current Generated Results

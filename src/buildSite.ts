@@ -21,6 +21,23 @@ type EvidenceUrlReport = {
   statusCounts: Record<string, number>;
 };
 
+type McpProof = {
+  status: "created" | "skipped_no_api_key" | "failed";
+  toolCount?: number;
+  mcpUrlHost?: string;
+  error?: string;
+};
+
+type GeminiReview = {
+  status: "created" | "skipped_no_api_key" | "failed";
+  model: string;
+  review?: {
+    overallReadiness?: string;
+    strongestSignals?: string[];
+    remainingRisks?: string[];
+  };
+};
+
 const buildabilityOrder: Buildability[] = [
   "ready_now",
   "ready_with_limits",
@@ -76,6 +93,73 @@ function renderMetricCards(summary: Summary) {
         </article>`
     )
     .join("");
+}
+
+function renderHeroBrief(
+  summary: Summary,
+  verification: VerificationFile,
+  requirements: RequirementReport | null,
+  evidenceUrls: EvidenceUrlReport | null,
+  mcpProof: McpProof | null,
+  geminiReview: GeminiReview | null
+) {
+  const total = summary.totalApps;
+  const evidenceText = evidenceUrls ? `${evidenceUrls.reachableOrBlockedCount}/${evidenceUrls.totalEvidenceUrls}` : "pending";
+  const requirementText = requirements ? `${requirements.checks.filter((item) => item.status === "pass").length}/${requirements.checks.length}` : "pending";
+  const composioSupported = summary.composioCoverage.supported;
+  const composioAdjacent = summary.composioCoverage.partial_or_adjacent;
+  const mcpText =
+    mcpProof?.status === "created"
+      ? `${mcpProof.toolCount ?? 0} tools listed`
+      : mcpProof?.status === "failed"
+        ? "proof pending"
+        : "add COMPOSIO_API_KEY";
+  const geminiText =
+    geminiReview?.status === "created"
+      ? geminiReview.model
+      : geminiReview?.status === "failed"
+        ? "review failed"
+        : `${geminiReview?.model ?? "gemini-3.1-flash-lite"} key needed`;
+
+  return `
+    <aside class="hero-brief" aria-label="Research operations summary">
+      <div class="brief-topline">
+        <span>Connector Intake Map</span>
+        <strong>${summary.totalApps}</strong>
+      </div>
+      <div class="stacked-bar" aria-hidden="true">
+        ${buildabilityOrder
+          .map((key) => `<i class="${key}" style="width:${pct(summary.byBuildability[key], total)}"></i>`)
+          .join("")}
+      </div>
+      <dl class="brief-grid">
+        <div><dt>Ready now</dt><dd>${summary.byBuildability.ready_now}</dd></div>
+        <div><dt>Guardrails</dt><dd>${summary.byBuildability.ready_with_limits}</dd></div>
+        <div><dt>Outreach</dt><dd>${summary.byBuildability.needs_outreach}</dd></div>
+        <div><dt>Defer</dt><dd>${summary.byBuildability.not_buildable_today}</dd></div>
+      </dl>
+      <div class="brief-row">
+        <span>Evidence URLs</span>
+        <strong>${escapeHtml(evidenceText)}</strong>
+      </div>
+      <div class="brief-row">
+        <span>Requirement checks</span>
+        <strong>${escapeHtml(requirementText)}</strong>
+      </div>
+      <div class="brief-row">
+        <span>Composio coverage</span>
+        <strong>${composioSupported} supported + ${composioAdjacent} adjacent</strong>
+      </div>
+      <div class="brief-row">
+        <span>MCP proof</span>
+        <strong>${escapeHtml(mcpText)}</strong>
+      </div>
+      <div class="brief-row">
+        <span>Gemini review</span>
+        <strong>${escapeHtml(geminiText)}</strong>
+      </div>
+      <p class="brief-note">${verification.issues.length} verifier flags remain visible as ops follow-ups.</p>
+    </aside>`;
 }
 
 function renderMatrix(summary: Summary) {
@@ -246,6 +330,18 @@ function renderWorkflow() {
     <div class="tool-grid">${tools}</div>`;
 }
 
+function renderMcpProof(mcpProofText: string, mcpProof: McpProof | null) {
+  if (mcpProof?.status === "created") {
+    return escapeHtml(mcpProofText);
+  }
+
+  if (mcpProof?.status === "failed") {
+    return "MCP proof pending. The local Composio API key was rejected or the SDK call failed; replace the key, rerun npm run proof:mcp, then rebuild the site.";
+  }
+
+  return "MCP proof pending. Add COMPOSIO_API_KEY, run npm run proof:mcp, then rebuild the site.";
+}
+
 function renderAudit(auditRecords: AuditRecord[]) {
   return auditRecords
     .map(
@@ -307,7 +403,9 @@ function renderHtml(
   verification: VerificationFile,
   requirements: RequirementReport | null,
   evidenceUrls: EvidenceUrlReport | null,
-  mcpProof: string
+  mcpProofText: string,
+  mcpProof: McpProof | null,
+  geminiReview: GeminiReview | null
 ) {
   const easyWins = summary.byBuildability.ready_now;
   const gated = summary.byCredentialAccess.paid_or_admin_gated + summary.byCredentialAccess.partner_or_sales_gated;
@@ -360,11 +458,19 @@ function renderHtml(
         linear-gradient(135deg, #1e7f5c, #2a62b7 56%, #ae6f18);
       color: white;
     }
+    .hero-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .6fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: end;
+    }
+    .hero-main { min-width: 0; }
     .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-weight: 700; opacity: .82; }
     h1 {
-      max-width: 960px;
+      max-width: 900px;
       margin: 14px 0 18px;
-      font-size: clamp(36px, 7vw, 86px);
+      font-size: clamp(40px, 6.2vw, 92px);
       line-height: .98;
       letter-spacing: 0;
     }
@@ -383,6 +489,83 @@ function renderHtml(
       border: 1px solid rgba(255,255,255,.24);
       padding: 8px 10px;
       background: rgba(255,255,255,.08);
+    }
+    .hero-brief {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+      border-radius: 8px;
+      padding: 18px;
+      backdrop-filter: blur(14px);
+    }
+    .brief-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .brief-topline span {
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .brief-topline strong {
+      font-size: 44px;
+      line-height: 1;
+    }
+    .stacked-bar {
+      display: flex;
+      height: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .stacked-bar i { display: block; }
+    .stacked-bar .ready_now { background: #7dd6a9; }
+    .stacked-bar .ready_with_limits { background: #8bb6f2; }
+    .stacked-bar .needs_outreach { background: #f0c172; }
+    .stacked-bar .not_buildable_today { background: #e7908e; }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 16px;
+    }
+    .brief-grid div {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      padding: 10px;
+      border-radius: 6px;
+      min-width: 0;
+    }
+    .brief-grid dt, .brief-row span {
+      color: rgba(255,255,255,.68);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .brief-grid dd {
+      margin: 4px 0 0;
+      font-size: 24px;
+      font-weight: 850;
+    }
+    .brief-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .brief-row strong {
+      text-align: right;
+      font-size: 13px;
+    }
+    .brief-note {
+      margin: 12px 0 0;
+      color: rgba(255,255,255,.72);
     }
     main { padding: 28px max(18px, 5vw) 64px; }
     section { margin: 34px auto; max-width: 1220px; }
@@ -571,6 +754,9 @@ function renderHtml(
     @media (max-width: 900px) {
       header { min-height: 58vh; padding-inline: 20px; }
       main { padding-inline: 14px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-brief { margin-top: 18px; }
+      .brief-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .metrics, .insights, .split, .tool-grid, .lane-grid, .quality-grid, .table-controls { grid-template-columns: 1fr; }
       .metrics { margin-top: 0; }
       .workflow { grid-template-columns: 1fr; }
@@ -581,7 +767,8 @@ function renderHtml(
 </head>
 <body>
   <header>
-    <div>
+    <div class="hero-grid">
+      <div class="hero-main">
       <div class="eyebrow">Composio Product Ops Take-Home</div>
       <h1>${easyWins} of 100 apps are agent-toolkit ready today.</h1>
       <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with repeatable checks, live source checks, and a human audit sample.</p>
@@ -591,6 +778,8 @@ function renderHtml(
         <span>Accuracy moved from ${firstPassPct}% to ${finalPct}% on audited sample</span>
         <span>Generated ${escapeHtml(generatedDate)}</span>
       </div>
+      </div>
+      ${renderHeroBrief(summary, verification, requirements, evidenceUrls, mcpProof, geminiReview)}
     </div>
   </header>
 
@@ -634,7 +823,7 @@ function renderHtml(
       <h2>Agent Workflow</h2>
       ${renderWorkflow()}
       <p>The Composio path is explicit: SDK sessions host custom research tools, and <code>npm run proof:mcp</code> can create a hosted MCP session and write a redacted proof artifact when <code>COMPOSIO_API_KEY</code> is configured.</p>
-      <div class="proof">${escapeHtml(mcpProof || "No MCP proof artifact generated yet. Run npm run proof:mcp with COMPOSIO_API_KEY to create data/run-logs/mcp-proof.json.")}</div>
+      <div class="proof">${renderMcpProof(mcpProofText, mcpProof)}</div>
     </section>
 
     <section>
@@ -711,8 +900,10 @@ async function main() {
   const verification = await readJson<VerificationFile>(resolveFromRoot("data", "verification.json"));
   const requirements = await optionalJson<RequirementReport>(resolveFromRoot("data", "requirement-checks.json"));
   const evidenceUrls = await optionalJson<EvidenceUrlReport>(resolveFromRoot("data", "evidence-url-checks.json"));
-  const mcpProof = await optionalText(resolveFromRoot("data", "run-logs", "mcp-proof.json"));
-  const html = renderHtml(rows, summary, verification, requirements, evidenceUrls, mcpProof);
+  const mcpProofText = await optionalText(resolveFromRoot("data", "run-logs", "mcp-proof.json"));
+  const mcpProof = await optionalJson<McpProof>(resolveFromRoot("data", "run-logs", "mcp-proof.json"));
+  const geminiReview = await optionalJson<GeminiReview>(resolveFromRoot("data", "run-logs", "gemini-review.json"));
+  const html = renderHtml(rows, summary, verification, requirements, evidenceUrls, mcpProofText, mcpProof, geminiReview);
   await writeText(resolveFromRoot("site", "index.html"), html);
   console.log("Built site/index.html");
 }

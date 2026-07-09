@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-07-09T09:13:09.168Z",
+  "status": "skipped_no_api_key",
+  "model": "gemini-3.1-flash-lite",
+  "docs": [
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite",
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/gemini-api/docs"
+  ],
+  "note": "GEMINI_API_KEY was not configured. Add it to .env to run the low-cost Gemini Flash-Lite review pass."
+}

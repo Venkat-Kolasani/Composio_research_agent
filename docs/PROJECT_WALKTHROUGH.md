@@ -36,7 +36,11 @@ This project turns Composio's 100-app take-home list into an evidence-backed con
    - Creates a Composio hosted MCP proof artifact when `COMPOSIO_API_KEY` is present.
    - Writes a redacted result to `data/run-logs/mcp-proof.json`.
 
-7. `build:site`
+7. `review:gemini`
+   - Uses `gemini-3.1-flash-lite` by default when `GEMINI_API_KEY` is configured.
+   - Produces a low-cost independent review artifact in `data/run-logs/gemini-review.json`.
+
+8. `build:site`
    - Generates `site/index.html` from the data artifacts.
    - The page is not hand-maintained, so the table and summary stay consistent.
 

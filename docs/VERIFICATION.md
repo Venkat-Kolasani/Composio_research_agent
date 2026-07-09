@@ -23,6 +23,7 @@
 npm run all
 npm run verify:requirements
 npm run verify:urls
+npm run review:gemini
 npm run check
 ```
 

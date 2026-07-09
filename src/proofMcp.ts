@@ -1,4 +1,5 @@
 import { writeJson, resolveFromRoot } from "./fs.js";
+import { loadDotEnv } from "./loadEnv.js";
 
 type RedactedProof = {
   generatedAt: string;
@@ -21,7 +22,14 @@ function safeHost(url: string | undefined) {
   }
 }
 
+function redactSecretFragments(value: string) {
+  return value
+    .replace(/ak_[^"\\\s,}]+/g, "[redacted Composio API key]")
+    .replace(/AIza[A-Za-z0-9_-]+/g, "AIza[redacted]");
+}
+
 async function createProof(): Promise<RedactedProof> {
+  loadDotEnv();
   const apiKey = process.env.COMPOSIO_API_KEY;
   const docs = [
     "https://docs.composio.dev/docs/sessions-via-mcp",
@@ -48,8 +56,7 @@ async function createProof(): Promise<RedactedProof> {
 
     const composio = new Composio({ apiKey });
     const session = await composio.create("composio_research_agent_takehome", {
-      mcp: true,
-      tools: []
+      mcp: true
     });
 
     const mcpUrl =
@@ -97,7 +104,7 @@ async function createProof(): Promise<RedactedProof> {
       generatedAt: new Date().toISOString(),
       status: "failed",
       docs,
-      error: error instanceof Error ? error.message : String(error),
+      error: redactSecretFragments(error instanceof Error ? error.message : String(error)),
       note:
         "The proof script failed in this environment. The failure is recorded so the submission stays honest and debuggable."
     };

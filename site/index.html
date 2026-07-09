@@ -43,11 +43,19 @@
         linear-gradient(135deg, #1e7f5c, #2a62b7 56%, #ae6f18);
       color: white;
     }
+    .hero-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .6fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: end;
+    }
+    .hero-main { min-width: 0; }
     .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-weight: 700; opacity: .82; }
     h1 {
-      max-width: 960px;
+      max-width: 900px;
       margin: 14px 0 18px;
-      font-size: clamp(36px, 7vw, 86px);
+      font-size: clamp(40px, 6.2vw, 92px);
       line-height: .98;
       letter-spacing: 0;
     }
@@ -66,6 +74,83 @@
       border: 1px solid rgba(255,255,255,.24);
       padding: 8px 10px;
       background: rgba(255,255,255,.08);
+    }
+    .hero-brief {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+      border-radius: 8px;
+      padding: 18px;
+      backdrop-filter: blur(14px);
+    }
+    .brief-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .brief-topline span {
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .brief-topline strong {
+      font-size: 44px;
+      line-height: 1;
+    }
+    .stacked-bar {
+      display: flex;
+      height: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .stacked-bar i { display: block; }
+    .stacked-bar .ready_now { background: #7dd6a9; }
+    .stacked-bar .ready_with_limits { background: #8bb6f2; }
+    .stacked-bar .needs_outreach { background: #f0c172; }
+    .stacked-bar .not_buildable_today { background: #e7908e; }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 16px;
+    }
+    .brief-grid div {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      padding: 10px;
+      border-radius: 6px;
+      min-width: 0;
+    }
+    .brief-grid dt, .brief-row span {
+      color: rgba(255,255,255,.68);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .brief-grid dd {
+      margin: 4px 0 0;
+      font-size: 24px;
+      font-weight: 850;
+    }
+    .brief-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .brief-row strong {
+      text-align: right;
+      font-size: 13px;
+    }
+    .brief-note {
+      margin: 12px 0 0;
+      color: rgba(255,255,255,.72);
     }
     main { padding: 28px max(18px, 5vw) 64px; }
     section { margin: 34px auto; max-width: 1220px; }
@@ -254,6 +339,9 @@
     @media (max-width: 900px) {
       header { min-height: 58vh; padding-inline: 20px; }
       main { padding-inline: 14px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-brief { margin-top: 18px; }
+      .brief-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .metrics, .insights, .split, .tool-grid, .lane-grid, .quality-grid, .table-controls { grid-template-columns: 1fr; }
       .metrics { margin-top: 0; }
       .workflow { grid-template-columns: 1fr; }
@@ -264,7 +352,8 @@
 </head>
 <body>
   <header>
-    <div>
+    <div class="hero-grid">
+      <div class="hero-main">
       <div class="eyebrow">Composio Product Ops Take-Home</div>
       <h1>58 of 100 apps are agent-toolkit ready today.</h1>
       <p class="hero-copy">I built a repeatable connector research agent that classifies API access, auth, buildability, Composio coverage, and blockers, then verifies weak claims with repeatable checks, live source checks, and a human audit sample.</p>
@@ -274,6 +363,44 @@
         <span>Accuracy moved from 70% to 100% on audited sample</span>
         <span>Generated Jul 9, 2026, 2:22 PM</span>
       </div>
+      </div>
+      
+    <aside class="hero-brief" aria-label="Research operations summary">
+      <div class="brief-topline">
+        <span>Connector Intake Map</span>
+        <strong>100</strong>
+      </div>
+      <div class="stacked-bar" aria-hidden="true">
+        <i class="ready_now" style="width:58%"></i><i class="ready_with_limits" style="width:31%"></i><i class="needs_outreach" style="width:9%"></i><i class="not_buildable_today" style="width:2%"></i>
+      </div>
+      <dl class="brief-grid">
+        <div><dt>Ready now</dt><dd>58</dd></div>
+        <div><dt>Guardrails</dt><dd>31</dd></div>
+        <div><dt>Outreach</dt><dd>9</dd></div>
+        <div><dt>Defer</dt><dd>2</dd></div>
+      </dl>
+      <div class="brief-row">
+        <span>Evidence URLs</span>
+        <strong>184/184</strong>
+      </div>
+      <div class="brief-row">
+        <span>Requirement checks</span>
+        <strong>16/16</strong>
+      </div>
+      <div class="brief-row">
+        <span>Composio coverage</span>
+        <strong>55 supported + 17 adjacent</strong>
+      </div>
+      <div class="brief-row">
+        <span>MCP proof</span>
+        <strong>proof pending</strong>
+      </div>
+      <div class="brief-row">
+        <span>Gemini review</span>
+        <strong>gemini-3.1-flash-lite key needed</strong>
+      </div>
+      <p class="brief-note">19 verifier flags remain visible as ops follow-ups.</p>
+    </aside>
     </div>
   </header>
 
@@ -484,18 +611,7 @@
           <span>Challenge weak claims, missing docs, unsupported ready-now verdicts, and gated app assumptions.</span>
         </article></div>
       <p>The Composio path is explicit: SDK sessions host custom research tools, and <code>npm run proof:mcp</code> can create a hosted MCP session and write a redacted proof artifact when <code>COMPOSIO_API_KEY</code> is configured.</p>
-      <div class="proof">{
-  &quot;generatedAt&quot;: &quot;2026-07-09T08:17:09.691Z&quot;,
-  &quot;status&quot;: &quot;skipped_no_api_key&quot;,
-  &quot;docs&quot;: [
-    &quot;https://docs.composio.dev/docs/sessions-via-mcp&quot;,
-    &quot;https://docs.composio.dev/docs/extending-sessions/custom-tools-and-toolkits&quot;,
-    &quot;https://docs.composio.dev/toolkits&quot;,
-    &quot;https://docs.composio.dev/docs/cli&quot;
-  ],
-  &quot;note&quot;: &quot;COMPOSIO_API_KEY was not configured. The script is still checked in so reviewers can run the hosted MCP proof without code changes.&quot;
-}
-</div>
+      <div class="proof">MCP proof pending. The local Composio API key was rejected or the SDK call failed; replace the key, rerun npm run proof:mcp, then rebuild the site.</div>
     </section>
 
     <section>

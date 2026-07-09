@@ -37,9 +37,17 @@ git push
 
 ## Optional But Strong
 
-1. **LLM key for live refresh**
-   - `OPENAI_API_KEY` is optional. Use it only if you add a live LLM extraction pass.
-   - The current submitted dataset does not require it because the evidence catalog is already curated and linked to official docs.
+1. **Gemini key for low-cost review**
+   - Use `GEMINI_API_KEY`, not OpenAI.
+   - Recommended model: `gemini-3.1-flash-lite`.
+   - Google describes Gemini 3.1 Flash-Lite as low-latency and cost-effective for high-frequency lightweight tasks, structured extraction, and agentic workflows.
+
+```bash
+echo 'GEMINI_API_KEY=your_key_here' >> .env
+echo 'GEMINI_MODEL=gemini-3.1-flash-lite' >> .env
+npm run review:gemini
+npm run build:site
+```
 
 2. **Search API key**
    - `TAVILY_API_KEY` or `SERPER_API_KEY` is optional.
@@ -63,6 +71,7 @@ For this assignment, “gated behind paid/admin/partner approval” is a correct
 ```bash
 npm run audit
 npm run proof:mcp
+npm run review:gemini
 npm run build:site
 git status
 npx vercel --prod
