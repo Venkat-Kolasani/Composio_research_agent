@@ -1,11 +1,34 @@
 {
-  "generatedAt": "2026-07-09T09:13:09.168Z",
-  "status": "skipped_no_api_key",
+  "generatedAt": "2026-07-09T10:27:27.387Z",
+  "status": "created",
   "model": "gemini-3.1-flash-lite",
   "docs": [
     "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite",
     "https://ai.google.dev/gemini-api/docs/pricing",
     "https://ai.google.dev/gemini-api/docs"
   ],
-  "note": "GEMINI_API_KEY was not configured. Add it to .env to run the low-cost Gemini Flash-Lite review pass."
+  "review": {
+    "overallReadiness": "High; 89% of apps are buildable (ready or limited), with 64% offering self-serve access.",
+    "strongestSignals": [
+      "High volume of self-serve accessible apps (64%) reduces initial friction.",
+      "Strong audit accuracy (100% final) suggests reliable research methodology.",
+      "Majority of apps (55%) already have existing Composio coverage."
+    ],
+    "remainingRisks": [
+      "High dependency on gated access (33% combined paid/partner/sales) creates potential bottlenecks for scaling.",
+      "Schema/safety complexity is the leading blocker (28%), indicating potential maintenance overhead.",
+      "Low confidence in 13% of the sample suggests a need for secondary verification on niche/AI-native apps."
+    ],
+    "interviewTalkingPoints": [
+      "How do we prioritize the 31 'ready_with_limits' apps versus the 58 'ready_now' apps to maximize ROI?",
+      "What is the strategy for handling apps that require manual partner/sales approval?",
+      "How can we standardize instance URL configuration for self-hosted/multi-tenant apps like Twenty and LiveAgent?"
+    ],
+    "suggestedFollowUps": [
+      "Perform a deep dive on the 9 'needs_outreach' apps to determine if they are worth the business development effort.",
+      "Develop a standardized template for 'Instance URL' configuration to address the recurring blocker in CRM/Support apps.",
+      "Re-audit the 'low confidence' cohort to confirm if API access is truly gated or simply poorly documented."
+    ]
+  },
+  "note": "Ran a low-cost Gemini Flash-Lite review pass over the generated summary and flagged rows. API key is not stored in the artifact."
 }

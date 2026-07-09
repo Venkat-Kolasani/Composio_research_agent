@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-09T08:53:20.013Z",
+  "generatedAt": "2026-07-09T10:31:55.026Z",
   "totalEvidenceUrls": 184,
   "reachableOrBlockedCount": 184,
   "hardFailureCount": 0,
   "statusCounts": {
-    "reachable": 123,
-    "redirected": 55,
+    "reachable": 121,
+    "redirected": 57,
     "blocked_or_auth": 6
   },
   "note": "401/403/429 responses count as blocked_or_auth rather than failed because several official docs intentionally block bots or require browser/auth context.",
@@ -18,11 +18,32 @@
       "finalUrl": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm"
     },
     {
-      "app": "Attio",
-      "url": "https://docs.attio.com/rest-api/overview",
+      "app": "Salesforce",
+      "url": "https://help.salesforce.com/s/articleView?id=sf.connected_app_create_api_integration.htm&type=5",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://help.salesforce.com/s/articleView?language=en_US&id=sf.connected_app_create_api_integration.htm&type=5"
+    },
+    {
+      "app": "HubSpot",
+      "url": "https://developers.hubspot.com/docs/api/overview",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview"
+    },
+    {
+      "app": "HubSpot",
+      "url": "https://developers.hubspot.com/docs/api/private-apps",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview"
+    },
+    {
+      "app": "Pipedrive",
+      "url": "https://developers.pipedrive.com/docs/api/v1",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://docs.attio.com/rest-api/overview"
+      "finalUrl": "https://developers.pipedrive.com/docs/api/v1"
     },
     {
       "app": "Pipedrive",
@@ -33,38 +54,17 @@
     },
     {
       "app": "Attio",
+      "url": "https://docs.attio.com/rest-api/overview",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.attio.com/rest-api/overview"
+    },
+    {
+      "app": "Attio",
       "url": "https://docs.attio.com/rest-api/guides/authentication",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://docs.attio.com/rest-api/guides/authentication"
-    },
-    {
-      "app": "Salesforce",
-      "url": "https://help.salesforce.com/s/articleView?id=sf.connected_app_create_api_integration.htm&type=5",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://help.salesforce.com/s/articleView?language=en_US&id=sf.connected_app_create_api_integration.htm&type=5"
-    },
-    {
-      "app": "Pipedrive",
-      "url": "https://developers.pipedrive.com/docs/api/v1",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.pipedrive.com/docs/api/v1"
-    },
-    {
-      "app": "Zoho CRM",
-      "url": "https://www.zoho.com/crm/developer/docs/api/v7/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://www.zoho.com/crm/developer/docs/api/v7/"
-    },
-    {
-      "app": "Zoho CRM",
-      "url": "https://www.zoho.com/accounts/protocol/oauth.html",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://www.zoho.com/developer/oauth/introduction.html"
     },
     {
       "app": "Twenty",
@@ -82,17 +82,31 @@
     },
     {
       "app": "Podio",
+      "url": "https://developers.podio.com/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.podio.com/"
+    },
+    {
+      "app": "Podio",
       "url": "https://developers.podio.com/authentication",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developers.podio.com/authentication"
     },
     {
-      "app": "Podio",
-      "url": "https://developers.podio.com/",
+      "app": "Zoho CRM",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v7/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://developers.podio.com/"
+      "finalUrl": "https://www.zoho.com/crm/developer/docs/api/v7/"
+    },
+    {
+      "app": "Zoho CRM",
+      "url": "https://www.zoho.com/accounts/protocol/oauth.html",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://www.zoho.com/developer/oauth/introduction.html"
     },
     {
       "app": "Close",
@@ -100,6 +114,13 @@
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://developer.close.com/.md"
+    },
+    {
+      "app": "Close",
+      "url": "https://developer.close.com/topics/authentication/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.close.com/topics/authentication.md"
     },
     {
       "app": "Copper",
@@ -114,13 +135,6 @@
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://api.docs.dealcloud.com/"
-    },
-    {
-      "app": "Close",
-      "url": "https://developer.close.com/topics/authentication/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.close.com/topics/authentication.md"
     },
     {
       "app": "Zendesk",
@@ -151,18 +165,18 @@
       "finalUrl": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication"
     },
     {
-      "app": "Front",
-      "url": "https://dev.frontapp.com/reference/introduction",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://dev.frontapp.com/reference/introduction"
-    },
-    {
       "app": "Freshdesk",
       "url": "https://developers.freshdesk.com/api/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developers.freshdesk.com/api/"
+    },
+    {
+      "app": "Front",
+      "url": "https://dev.frontapp.com/reference/introduction",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.frontapp.com/reference/introduction"
     },
     {
       "app": "Front",
@@ -172,18 +186,25 @@
       "finalUrl": "https://dev.frontapp.com/docs/oauth"
     },
     {
-      "app": "HubSpot",
-      "url": "https://developers.hubspot.com/docs/api/private-apps",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.hubspot.com/docs/apps/legacy-apps/private-apps/overview"
-    },
-    {
       "app": "Pylon",
       "url": "https://docs.usepylon.com/",
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://docs.usepylon.com/pylon-docs"
+    },
+    {
+      "app": "LiveAgent",
+      "url": "https://support.liveagent.com/802463-REST-API",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://support.liveagent.com/802463-REST-API"
+    },
+    {
+      "app": "LiveAgent",
+      "url": "https://support.liveagent.com/840770-Complete-API-reference",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://support.liveagent.com/840770-Complete-API-reference"
     },
     {
       "app": "Plain",
@@ -200,48 +221,6 @@
       "finalUrl": "https://www.plain.com/docs/graphql/authentication"
     },
     {
-      "app": "Gorgias",
-      "url": "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias"
-    },
-    {
-      "app": "Gorgias",
-      "url": "https://developers.gorgias.com/reference/introduction",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.gorgias.com/reference/introduction"
-    },
-    {
-      "app": "Gladly",
-      "url": "https://developer.gladly.com/rest/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.gladly.com/rest/"
-    },
-    {
-      "app": "LiveAgent",
-      "url": "https://support.liveagent.com/840770-Complete-API-reference",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://support.liveagent.com/840770-Complete-API-reference"
-    },
-    {
-      "app": "LiveAgent",
-      "url": "https://support.liveagent.com/802463-REST-API",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://support.liveagent.com/802463-REST-API"
-    },
-    {
-      "app": "Zoho Cliq",
-      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://www.zoho.com/cliq/help/restapi/v2/introduction/"
-    },
-    {
       "app": "Help Scout",
       "url": "https://developer.helpscout.com/mailbox-api/",
       "status": "reachable",
@@ -256,39 +235,25 @@
       "finalUrl": "https://developer.helpscout.com/mailbox-api/overview/authentication/"
     },
     {
-      "app": "Zoho Cliq",
-      "url": "https://www.zoho.com/accounts/protocol/oauth.html",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://www.zoho.com/developer/oauth/introduction.html"
-    },
-    {
-      "app": "Twilio",
-      "url": "https://www.twilio.com/docs/iam/api-keys",
+      "app": "Gorgias",
+      "url": "https://developers.gorgias.com/reference/introduction",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://www.twilio.com/docs/iam/api-keys"
+      "finalUrl": "https://developers.gorgias.com/reference/introduction"
     },
     {
-      "app": "Twilio",
-      "url": "https://www.twilio.com/docs/usage/api",
+      "app": "Gorgias",
+      "url": "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://www.twilio.com/docs/usage/api"
+      "finalUrl": "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias"
     },
     {
-      "app": "Lark (Larksuite)",
-      "url": "https://open.larksuite.com/document/server-docs/authentication-management/access-token/tenant_access_token_internal",
+      "app": "Gladly",
+      "url": "https://developer.gladly.com/rest/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://open.larksuite.com/document/server-docs/authentication-management/access-token/tenant_access_token_internal"
-    },
-    {
-      "app": "Lark (Larksuite)",
-      "url": "https://open.larksuite.com/document/home/index",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://open.larksuite.com/document/home/index"
+      "finalUrl": "https://developer.gladly.com/rest/"
     },
     {
       "app": "Slack",
@@ -298,18 +263,53 @@
       "finalUrl": "https://docs.slack.dev/apis/web-api/"
     },
     {
-      "app": "Discord",
-      "url": "https://discord.com/developers/docs/topics/oauth2",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.discord.com/developers/topics/oauth2"
-    },
-    {
       "app": "Slack",
       "url": "https://api.slack.com/authentication/oauth-v2",
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://docs.slack.dev/authentication/installing-with-oauth/"
+    },
+    {
+      "app": "Twilio",
+      "url": "https://www.twilio.com/docs/usage/api",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.twilio.com/docs/usage/api"
+    },
+    {
+      "app": "Twilio",
+      "url": "https://www.twilio.com/docs/iam/api-keys",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.twilio.com/docs/iam/api-keys"
+    },
+    {
+      "app": "Zoho Cliq",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://www.zoho.com/cliq/help/restapi/v2/introduction/"
+    },
+    {
+      "app": "Zoho Cliq",
+      "url": "https://www.zoho.com/accounts/protocol/oauth.html",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://www.zoho.com/developer/oauth/introduction.html"
+    },
+    {
+      "app": "Lark (Larksuite)",
+      "url": "https://open.larksuite.com/document/home/index",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://open.larksuite.com/document/home/index"
+    },
+    {
+      "app": "Lark (Larksuite)",
+      "url": "https://open.larksuite.com/document/server-docs/authentication-management/access-token/tenant_access_token_internal",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://open.larksuite.com/document/server-docs/authentication-management/access-token/tenant_access_token_internal"
     },
     {
       "app": "Pumble",
@@ -319,11 +319,18 @@
       "finalUrl": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/"
     },
     {
-      "app": "Telegram",
-      "url": "https://core.telegram.org/bots/features",
-      "status": "reachable",
+      "app": "Discord",
+      "url": "https://discord.com/developers/docs/intro",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://core.telegram.org/bots/features"
+      "finalUrl": "https://docs.discord.com/developers/intro"
+    },
+    {
+      "app": "Discord",
+      "url": "https://discord.com/developers/docs/topics/oauth2",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.discord.com/developers/topics/oauth2"
     },
     {
       "app": "Telegram",
@@ -333,18 +340,25 @@
       "finalUrl": "https://core.telegram.org/bots/api"
     },
     {
-      "app": "Discord",
-      "url": "https://discord.com/developers/docs/intro",
-      "status": "redirected",
+      "app": "Telegram",
+      "url": "https://core.telegram.org/bots/features",
+      "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://docs.discord.com/developers/intro"
+      "finalUrl": "https://core.telegram.org/bots/features"
     },
     {
-      "app": "Aircall",
-      "url": "https://developer.aircall.io/api-references/#authentication",
+      "app": "WhatsApp Business",
+      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api",
       "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developer.aircall.io/api-references/"
+      "finalUrl": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform"
+    },
+    {
+      "app": "WhatsApp Business",
+      "url": "https://developers.facebook.com/docs/whatsapp/embedded-signup",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/overview"
     },
     {
       "app": "Aircall",
@@ -354,11 +368,11 @@
       "finalUrl": "https://developer.aircall.io/api-references/"
     },
     {
-      "app": "WhatsApp Business",
-      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api",
+      "app": "Aircall",
+      "url": "https://developer.aircall.io/api-references/#authentication",
       "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform"
+      "finalUrl": "https://developer.aircall.io/api-references/"
     },
     {
       "app": "Vonage",
@@ -375,25 +389,18 @@
       "finalUrl": "https://developer.vonage.com/en/getting-started/concepts/authentication"
     },
     {
-      "app": "WhatsApp Business",
-      "url": "https://developers.facebook.com/docs/whatsapp/embedded-signup",
+      "app": "Google Ads",
+      "url": "https://developers.google.com/google-ads/api/docs/start",
       "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/overview"
-    },
-    {
-      "app": "LinkedIn Ads",
-      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/"
+      "finalUrl": "https://developers.google.com/google-ads/api/docs/get-started/introduction?hl=tr"
     },
     {
       "app": "Google Ads",
       "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
-      "status": "reachable",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/google-ads/api/docs/oauth/overview"
+      "finalUrl": "https://developers.google.com/google-ads/api/docs/oauth/overview?hl=zh-cn"
     },
     {
       "app": "Meta Ads",
@@ -401,6 +408,20 @@
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://developers.facebook.com/documentation/ads-commerce/marketing-api"
+    },
+    {
+      "app": "Meta Ads",
+      "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
+    },
+    {
+      "app": "LinkedIn Ads",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/?view=li-lms-2026-06"
     },
     {
       "app": "LinkedIn Ads",
@@ -417,6 +438,13 @@
       "finalUrl": "https://highlevel.stoplight.io/docs/integrations/"
     },
     {
+      "app": "GoHighLevel",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/Overview",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://marketplace.gohighlevel.com/docs/oauth/Overview"
+    },
+    {
       "app": "Mailchimp",
       "url": "https://mailchimp.com/developer/marketing/api/",
       "status": "reachable",
@@ -431,20 +459,6 @@
       "finalUrl": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/"
     },
     {
-      "app": "GoHighLevel",
-      "url": "https://marketplace.gohighlevel.com/docs/oauth/Overview",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://marketplace.gohighlevel.com/docs/oauth/Overview"
-    },
-    {
-      "app": "Meta Ads",
-      "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens"
-    },
-    {
       "app": "Klaviyo",
       "url": "https://developers.klaviyo.com/en/reference/api_overview",
       "status": "reachable",
@@ -452,11 +466,46 @@
       "finalUrl": "https://developers.klaviyo.com/en/reference/api_overview"
     },
     {
+      "app": "Klaviyo",
+      "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.klaviyo.com/en/docs/authenticate_"
+    },
+    {
       "app": "systeme.io",
       "url": "https://developer.systeme.io/reference",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developer.systeme.io/reference"
+    },
+    {
+      "app": "Pinterest",
+      "url": "https://developers.pinterest.com/docs/api/v5/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.pinterest.com/docs/api/v5/introduction?"
+    },
+    {
+      "app": "Pinterest",
+      "url": "https://developers.pinterest.com/docs/getting-started/authentication/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.pinterest.com/docs/getting-started/connect-app/"
+    },
+    {
+      "app": "Threads (Meta)",
+      "url": "https://developers.facebook.com/docs/threads",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.facebook.com/documentation/threads"
+    },
+    {
+      "app": "Threads (Meta)",
+      "url": "https://developers.facebook.com/docs/threads/get-started",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.facebook.com/documentation/threads/get-started"
     },
     {
       "app": "SendGrid",
@@ -473,25 +522,11 @@
       "finalUrl": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/api-getting-started"
     },
     {
-      "app": "HubSpot",
-      "url": "https://developers.hubspot.com/docs/api/overview",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview"
-    },
-    {
       "app": "Shopify",
       "url": "https://shopify.dev/docs/api",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://shopify.dev/docs/api"
-    },
-    {
-      "app": "Klaviyo",
-      "url": "https://developers.klaviyo.com/en/docs/authenticate_",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.klaviyo.com/en/docs/authenticate_"
     },
     {
       "app": "Shopify",
@@ -502,31 +537,31 @@
     },
     {
       "app": "WooCommerce",
-      "url": "https://woocommerce.com/document/woocommerce-rest-api/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://woocommerce.com/document/woocommerce-rest-api/"
-    },
-    {
-      "app": "Threads (Meta)",
-      "url": "https://developers.facebook.com/docs/threads/get-started",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.facebook.com/documentation/threads/get-started"
-    },
-    {
-      "app": "WooCommerce",
       "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
     },
     {
-      "app": "Threads (Meta)",
-      "url": "https://developers.facebook.com/docs/threads",
+      "app": "WooCommerce",
+      "url": "https://woocommerce.com/document/woocommerce-rest-api/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://woocommerce.com/document/woocommerce-rest-api/"
+    },
+    {
+      "app": "BigCommerce",
+      "url": "https://developer.bigcommerce.com/docs/rest-management",
       "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developers.facebook.com/documentation/threads"
+      "finalUrl": "https://docs.bigcommerce.com/docs/rest-management.md"
+    },
+    {
+      "app": "BigCommerce",
+      "url": "https://developer.bigcommerce.com/docs/start/authentication",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.bigcommerce.com/docs/start/authentication.md"
     },
     {
       "app": "Salesforce Commerce Cloud",
@@ -534,13 +569,6 @@
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developer.salesforce.com/docs/commerce/commerce-api/overview"
-    },
-    {
-      "app": "Google Ads",
-      "url": "https://developers.google.com/google-ads/api/docs/start",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/google-ads/api/docs/get-started/introduction?hl=es-419"
     },
     {
       "app": "Salesforce Commerce Cloud",
@@ -564,11 +592,18 @@
       "finalUrl": "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
     },
     {
-      "app": "Pinterest",
-      "url": "https://developers.pinterest.com/docs/getting-started/authentication/",
-      "status": "redirected",
+      "app": "Squarespace",
+      "url": "https://developers.squarespace.com/",
+      "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://developers.pinterest.com/docs/getting-started/connect-app/"
+      "finalUrl": "https://developers.squarespace.com/"
+    },
+    {
+      "app": "Squarespace",
+      "url": "https://developers.squarespace.com/commerce-apis/overview",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.squarespace.com/commerce-apis/overview"
     },
     {
       "app": "Ecwid",
@@ -585,25 +620,11 @@
       "finalUrl": "https://docs.ecwid.com/"
     },
     {
-      "app": "Pinterest",
-      "url": "https://developers.pinterest.com/docs/api/v5/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.pinterest.com/docs/api/v5/introduction?"
-    },
-    {
       "app": "Gumroad",
       "url": "https://gumroad.com/api",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://gumroad.com/api"
-    },
-    {
-      "app": "Amazon Selling Partner",
-      "url": "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developer-docs.amazon/sp-api/docs/authorizing-selling-partner-api-applications"
     },
     {
       "app": "Amazon Selling Partner",
@@ -613,6 +634,13 @@
       "finalUrl": "https://developer-docs.amazon/sp-api/docs/welcome"
     },
     {
+      "app": "Amazon Selling Partner",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developer-docs.amazon/sp-api/docs/authorizing-selling-partner-api-applications"
+    },
+    {
       "app": "fanbasis",
       "url": "https://www.fanbasis.com/",
       "status": "reachable",
@@ -620,18 +648,18 @@
       "finalUrl": "https://www.fanbasis.com/"
     },
     {
-      "app": "Squarespace",
-      "url": "https://developers.squarespace.com/commerce-apis/overview",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.squarespace.com/commerce-apis/overview"
-    },
-    {
       "app": "DataForSEO",
       "url": "https://docs.dataforseo.com/v3/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://docs.dataforseo.com/v3/"
+    },
+    {
+      "app": "DataForSEO",
+      "url": "https://docs.dataforseo.com/v3/appendix-user-data/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.dataforseo.com/v3/appendix-user-data/"
     },
     {
       "app": "SE Ranking",
@@ -648,11 +676,18 @@
       "finalUrl": "https://docs.ahrefs.com/"
     },
     {
-      "app": "Squarespace",
-      "url": "https://developers.squarespace.com/",
-      "status": "reachable",
+      "app": "Ahrefs",
+      "url": "https://ahrefs.com/api",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://developers.squarespace.com/"
+      "finalUrl": "https://docs.ahrefs.com/"
+    },
+    {
+      "app": "MrScraper",
+      "url": "https://docs.mrscraper.com/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.mrscraper.com/docs/getting-started/overview"
     },
     {
       "app": "Apify",
@@ -662,32 +697,11 @@
       "finalUrl": "https://docs.apify.com/api/v2"
     },
     {
-      "app": "DataForSEO",
-      "url": "https://docs.dataforseo.com/v3/appendix-user-data/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.dataforseo.com/v3/appendix-user-data/"
-    },
-    {
-      "app": "BigCommerce",
-      "url": "https://developer.bigcommerce.com/docs/start/authentication",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.bigcommerce.com/docs/start/authentication.md"
-    },
-    {
       "app": "Apify",
       "url": "https://docs.apify.com/platform/integrations/api",
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://docs.apify.com/integrations/api"
-    },
-    {
-      "app": "Bright Data",
-      "url": "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api"
     },
     {
       "app": "Firecrawl",
@@ -697,20 +711,6 @@
       "finalUrl": "https://docs.firecrawl.dev/introduction"
     },
     {
-      "app": "Bright Data",
-      "url": "https://docs.brightdata.com/api-reference/authentication",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.brightdata.com/api-reference/authentication"
-    },
-    {
-      "app": "Ahrefs",
-      "url": "https://ahrefs.com/api",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.ahrefs.com/"
-    },
-    {
       "app": "Firecrawl",
       "url": "https://docs.firecrawl.dev/mcp-server",
       "status": "reachable",
@@ -718,11 +718,46 @@
       "finalUrl": "https://docs.firecrawl.dev/mcp-server"
     },
     {
+      "app": "Bright Data",
+      "url": "https://docs.brightdata.com/api-reference/authentication",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.brightdata.com/api-reference/authentication"
+    },
+    {
+      "app": "Bright Data",
+      "url": "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.brightdata.com/api-reference/rest-api/scraper/crawl-api"
+    },
+    {
+      "app": "Sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "app": "Waterfall.io",
+      "url": "https://www.waterfall.io/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.waterfall.io/"
+    },
+    {
       "app": "Clay",
       "url": "https://university.clay.com/docs/http-api-integration-overview",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://university.clay.com/docs/http-api-integration-overview"
+    },
+    {
+      "app": "Clay",
+      "url": "https://www.clay.com/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.clay.com/"
     },
     {
       "app": "GitHub",
@@ -746,39 +781,18 @@
       "finalUrl": "https://vercel.com/docs/rest-api"
     },
     {
-      "app": "BigCommerce",
-      "url": "https://developer.bigcommerce.com/docs/rest-management",
+      "app": "Vercel",
+      "url": "https://vercel.com/docs/rest-api/reference/authentication",
       "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://docs.bigcommerce.com/docs/rest-management.md"
+      "finalUrl": "https://vercel.com/docs/rest-api/authentication/sso-token-exchange"
     },
     {
-      "app": "Clay",
-      "url": "https://www.clay.com/",
-      "status": "reachable",
+      "app": "Netlify",
+      "url": "https://docs.netlify.com/api/get-started/",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://www.clay.com/"
-    },
-    {
-      "app": "Waterfall.io",
-      "url": "https://www.waterfall.io/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://www.waterfall.io/"
-    },
-    {
-      "app": "Sherlock",
-      "url": "https://github.com/sherlock-project/sherlock",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://github.com/sherlock-project/sherlock"
-    },
-    {
-      "app": "Cloudflare",
-      "url": "https://developers.cloudflare.com/api/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.cloudflare.com/api/"
+      "finalUrl": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
     },
     {
       "app": "Netlify",
@@ -789,73 +803,17 @@
     },
     {
       "app": "Cloudflare",
+      "url": "https://developers.cloudflare.com/api/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.cloudflare.com/api/"
+    },
+    {
+      "app": "Cloudflare",
       "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/"
-    },
-    {
-      "app": "Supabase",
-      "url": "https://supabase.com/docs/guides/api/api-keys",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://supabase.com/docs/guides/getting-started/api-keys"
-    },
-    {
-      "app": "Netlify",
-      "url": "https://docs.netlify.com/api/get-started/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
-    },
-    {
-      "app": "Vercel",
-      "url": "https://vercel.com/docs/rest-api/reference/authentication",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://vercel.com/docs/rest-api/authentication/sso-token-exchange"
-    },
-    {
-      "app": "Neo4j",
-      "url": "https://neo4j.com/docs/operations-manual/current/authentication-authorization/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://neo4j.com/docs/operations-manual/current/authentication-authorization/"
-    },
-    {
-      "app": "Neo4j",
-      "url": "https://neo4j.com/docs/aura/platform/api/overview/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://neo4j.com/docs/aura/api/overview/"
-    },
-    {
-      "app": "MrScraper",
-      "url": "https://docs.mrscraper.com/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.mrscraper.com/docs/getting-started/overview"
-    },
-    {
-      "app": "MongoDB Atlas",
-      "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://www.mongodb.com/docs/atlas/configure-api-access/"
-    },
-    {
-      "app": "MongoDB Atlas",
-      "url": "https://www.mongodb.com/docs/atlas/api/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://www.mongodb.com/docs/atlas/api/"
-    },
-    {
-      "app": "Sentry",
-      "url": "https://docs.sentry.io/api/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.sentry.io/api/"
     },
     {
       "app": "Supabase",
@@ -865,18 +823,25 @@
       "finalUrl": "https://supabase.com/docs/reference/api/start"
     },
     {
-      "app": "Sentry",
-      "url": "https://docs.sentry.io/api/auth/",
-      "status": "reachable",
+      "app": "Supabase",
+      "url": "https://supabase.com/docs/guides/api/api-keys",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://docs.sentry.io/api/auth/"
+      "finalUrl": "https://supabase.com/docs/guides/getting-started/api-keys"
     },
     {
-      "app": "Snowflake",
-      "url": "https://docs.snowflake.com/en/developer-guide/sql-api/index",
+      "app": "Neo4j",
+      "url": "https://neo4j.com/docs/aura/platform/api/overview/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://neo4j.com/docs/aura/api/overview/"
+    },
+    {
+      "app": "Neo4j",
+      "url": "https://neo4j.com/docs/operations-manual/current/authentication-authorization/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://docs.snowflake.com/en/developer-guide/sql-api/index"
+      "finalUrl": "https://neo4j.com/docs/operations-manual/current/authentication-authorization/"
     },
     {
       "app": "Snowflake",
@@ -886,11 +851,32 @@
       "finalUrl": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api"
     },
     {
-      "app": "Notion",
-      "url": "https://developers.notion.com/reference/intro",
+      "app": "Snowflake",
+      "url": "https://docs.snowflake.com/en/developer-guide/sql-api/index",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://developers.notion.com/reference/intro"
+      "finalUrl": "https://docs.snowflake.com/en/developer-guide/sql-api/index"
+    },
+    {
+      "app": "MongoDB Atlas",
+      "url": "https://www.mongodb.com/docs/atlas/api/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mongodb.com/docs/atlas/api/"
+    },
+    {
+      "app": "MongoDB Atlas",
+      "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mongodb.com/docs/atlas/configure-api-access/"
+    },
+    {
+      "app": "Datadog",
+      "url": "https://docs.datadoghq.com/api/latest/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.datadoghq.com/api/latest/"
     },
     {
       "app": "Datadog",
@@ -900,11 +886,32 @@
       "finalUrl": "https://docs.datadoghq.com/account_management/api-app-keys/"
     },
     {
-      "app": "Datadog",
-      "url": "https://docs.datadoghq.com/api/latest/",
+      "app": "Sentry",
+      "url": "https://docs.sentry.io/api/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://docs.datadoghq.com/api/latest/"
+      "finalUrl": "https://docs.sentry.io/api/"
+    },
+    {
+      "app": "Sentry",
+      "url": "https://docs.sentry.io/api/auth/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.sentry.io/api/auth/"
+    },
+    {
+      "app": "Notion",
+      "url": "https://developers.notion.com/reference/intro",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.notion.com/reference/intro"
+    },
+    {
+      "app": "Notion",
+      "url": "https://developers.notion.com/docs/authorization",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.notion.com/guides/get-started/authorization"
     },
     {
       "app": "Airtable",
@@ -921,34 +928,6 @@
       "finalUrl": "https://airtable.com/developers/web/guides/personal-access-tokens"
     },
     {
-      "app": "Notion",
-      "url": "https://developers.notion.com/docs/authorization",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.notion.com/guides/get-started/authorization"
-    },
-    {
-      "app": "Asana",
-      "url": "https://developers.asana.com/docs/oauth",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developers.asana.com/docs/oauth"
-    },
-    {
-      "app": "Jira",
-      "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/"
-    },
-    {
-      "app": "Jira",
-      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
-    },
-    {
       "app": "Linear",
       "url": "https://developers.linear.app/docs/graphql/working-with-the-graphql-api",
       "status": "redirected",
@@ -963,6 +942,34 @@
       "finalUrl": "https://linear.app/developers"
     },
     {
+      "app": "Jira",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
+    },
+    {
+      "app": "Jira",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/"
+    },
+    {
+      "app": "Asana",
+      "url": "https://developers.asana.com/reference/rest-api-reference",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.asana.com/reference/rest-api-reference"
+    },
+    {
+      "app": "Asana",
+      "url": "https://developers.asana.com/docs/oauth",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.asana.com/docs/oauth"
+    },
+    {
       "app": "Monday.com",
       "url": "https://developer.monday.com/api-reference/docs",
       "status": "redirected",
@@ -970,18 +977,11 @@
       "finalUrl": "https://developer.monday.com/api-reference/docs/basics"
     },
     {
-      "app": "Coda",
-      "url": "https://coda.io/developers/apis/v1#section/Authentication",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://coda.io/developers/apis/v1"
-    },
-    {
-      "app": "Coda",
-      "url": "https://coda.io/developers/apis/v1",
+      "app": "Monday.com",
+      "url": "https://developer.monday.com/apps/docs/oauth",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://coda.io/developers/apis/v1"
+      "finalUrl": "https://developer.monday.com/apps/docs/oauth"
     },
     {
       "app": "ClickUp",
@@ -998,18 +998,25 @@
       "finalUrl": "https://developer.clickup.com/docs/authentication"
     },
     {
-      "app": "Asana",
-      "url": "https://developers.asana.com/reference/rest-api-reference",
+      "app": "Coda",
+      "url": "https://coda.io/developers/apis/v1",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://developers.asana.com/reference/rest-api-reference"
+      "finalUrl": "https://coda.io/developers/apis/v1"
     },
     {
-      "app": "Harvest",
-      "url": "https://help.getharvest.com/api-v2/",
+      "app": "Coda",
+      "url": "https://coda.io/developers/apis/v1#section/Authentication",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://coda.io/developers/apis/v1"
+    },
+    {
+      "app": "Smartsheet",
+      "url": "https://smartsheet.redoc.ly/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://help.getharvest.com/api-v2/"
+      "finalUrl": "https://smartsheet.redoc.ly/"
     },
     {
       "app": "Smartsheet",
@@ -1020,31 +1027,17 @@
     },
     {
       "app": "Harvest",
+      "url": "https://help.getharvest.com/api-v2/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://help.getharvest.com/api-v2/"
+    },
+    {
+      "app": "Harvest",
       "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/"
-    },
-    {
-      "app": "Smartsheet",
-      "url": "https://smartsheet.redoc.ly/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://smartsheet.redoc.ly/"
-    },
-    {
-      "app": "Binance",
-      "url": "https://binance-docs.github.io/apidocs/spot/en/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://binance-docs.github.io/apidocs/spot/en/"
-    },
-    {
-      "app": "Monday.com",
-      "url": "https://developer.monday.com/apps/docs/oauth",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.monday.com/apps/docs/oauth"
     },
     {
       "app": "Stripe",
@@ -1061,11 +1054,25 @@
       "finalUrl": "https://docs.stripe.com/keys"
     },
     {
-      "app": "Paygent Connect",
-      "url": "https://www.nmi.com/developers/",
-      "status": "redirected",
+      "app": "Plaid",
+      "url": "https://plaid.com/docs/",
+      "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://www.nmi.com/"
+      "finalUrl": "https://plaid.com/docs/"
+    },
+    {
+      "app": "Plaid",
+      "url": "https://plaid.com/docs/api/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://plaid.com/docs/api/"
+    },
+    {
+      "app": "Binance",
+      "url": "https://binance-docs.github.io/apidocs/spot/en/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://binance-docs.github.io/apidocs/spot/en/"
     },
     {
       "app": "Binance",
@@ -1076,24 +1083,52 @@
     },
     {
       "app": "Paygent Connect",
+      "url": "https://www.nmi.com/developers/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://www.nmi.com/"
+    },
+    {
+      "app": "Paygent Connect",
       "url": "https://www.paygent.co.jp/",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://www.paygent.co.jp/"
     },
     {
-      "app": "Plaid",
-      "url": "https://plaid.com/docs/api/",
-      "status": "reachable",
+      "app": "iPayX",
+      "url": "https://ipayx.ai/docs",
+      "status": "redirected",
       "httpStatus": 200,
-      "finalUrl": "https://plaid.com/docs/api/"
+      "finalUrl": "https://www.ipayx.ai/docs"
     },
     {
-      "app": "Plaid",
-      "url": "https://plaid.com/docs/",
+      "app": "QuickBooks",
+      "url": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://plaid.com/docs/"
+      "finalUrl": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account"
+    },
+    {
+      "app": "QuickBooks",
+      "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization"
+    },
+    {
+      "app": "Xero",
+      "url": "https://developer.xero.com/documentation/api/accounting/overview",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.xero.com/documentation/api/accounting/overview"
+    },
+    {
+      "app": "Xero",
+      "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.xero.com/documentation/guides/oauth2/overview/"
     },
     {
       "app": "Brex",
@@ -1101,6 +1136,13 @@
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://developer.brex.com/"
+    },
+    {
+      "app": "Brex",
+      "url": "https://developer.brex.com/docs/authentication/",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.brex.com/guides/authentication"
     },
     {
       "app": "Ramp",
@@ -1117,18 +1159,11 @@
       "finalUrl": "https://docs.ramp.com/developer-api/v1/overview/authentication"
     },
     {
-      "app": "Brex",
-      "url": "https://developer.brex.com/docs/authentication/",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.brex.com/guides/authentication"
-    },
-    {
-      "app": "Xero",
-      "url": "https://developer.xero.com/documentation/api/accounting/overview",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.xero.com/documentation/api/accounting/overview"
+      "app": "PitchBook",
+      "url": "https://pitchbook.com/products/apis",
+      "status": "blocked_or_auth",
+      "httpStatus": 403,
+      "finalUrl": "https://pitchbook.com/products/apis"
     },
     {
       "app": "PitchBook",
@@ -1138,18 +1173,18 @@
       "finalUrl": "https://pitchbook.com/"
     },
     {
-      "app": "PitchBook",
-      "url": "https://pitchbook.com/products/apis",
-      "status": "blocked_or_auth",
-      "httpStatus": 403,
-      "finalUrl": "https://pitchbook.com/products/apis"
+      "app": "NotebookLM",
+      "url": "https://cloud.google.com/gemini/docs",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.cloud.google.com/gemini/docs?hl=zh-tw"
     },
     {
-      "app": "Xero",
-      "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+      "app": "NotebookLM",
+      "url": "https://support.google.com/notebooklm/",
       "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://developer.xero.com/documentation/guides/oauth2/overview/"
+      "finalUrl": "https://support.google.com/notebooklm/"
     },
     {
       "app": "Otter AI",
@@ -1194,32 +1229,11 @@
       "finalUrl": "https://consensus.app/home/api/"
     },
     {
-      "app": "QuickBooks",
-      "url": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account"
-    },
-    {
-      "app": "Devin",
-      "url": "https://docs.devin.ai/api-reference/overview",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.devin.ai/api-reference/overview"
-    },
-    {
       "app": "Reducto",
       "url": "https://docs.reducto.ai/",
       "status": "redirected",
       "httpStatus": 200,
       "finalUrl": "https://docs.reducto.ai/overview"
-    },
-    {
-      "app": "QuickBooks",
-      "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization"
     },
     {
       "app": "Reducto",
@@ -1230,31 +1244,17 @@
     },
     {
       "app": "Devin",
+      "url": "https://docs.devin.ai/api-reference/overview",
+      "status": "reachable",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.devin.ai/api-reference/overview"
+    },
+    {
+      "app": "Devin",
       "url": "https://docs.devin.ai/work-with-devin/devin-mcp",
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://docs.devin.ai/work-with-devin/devin-mcp"
-    },
-    {
-      "app": "NotebookLM",
-      "url": "https://support.google.com/notebooklm/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://support.google.com/notebooklm/"
-    },
-    {
-      "app": "higgsfield",
-      "url": "https://higgsfield.ai/",
-      "status": "reachable",
-      "httpStatus": 200,
-      "finalUrl": "https://higgsfield.ai/"
-    },
-    {
-      "app": "NotebookLM",
-      "url": "https://cloud.google.com/gemini/docs",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://docs.cloud.google.com/gemini/docs?hl=fr"
     },
     {
       "app": "higgsfield",
@@ -1264,11 +1264,11 @@
       "finalUrl": "https://higgsfield.ai/cli"
     },
     {
-      "app": "iPayX",
-      "url": "https://ipayx.ai/docs",
-      "status": "redirected",
+      "app": "higgsfield",
+      "url": "https://higgsfield.ai/",
+      "status": "reachable",
       "httpStatus": 200,
-      "finalUrl": "https://www.ipayx.ai/docs"
+      "finalUrl": "https://higgsfield.ai/"
     },
     {
       "app": "Mermaid CLI",
@@ -1276,6 +1276,13 @@
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://github.com/mermaid-js/mermaid-cli"
+    },
+    {
+      "app": "YouTube Transcript",
+      "url": "https://www.transcriptapi.com/docs",
+      "status": "redirected",
+      "httpStatus": 200,
+      "finalUrl": "https://transcriptapi.com/docs/"
     },
     {
       "app": "Grain",
@@ -1290,13 +1297,6 @@
       "status": "reachable",
       "httpStatus": 200,
       "finalUrl": "https://support.grain.com/en/articles/15507288-grain-api"
-    },
-    {
-      "app": "YouTube Transcript",
-      "url": "https://www.transcriptapi.com/docs",
-      "status": "redirected",
-      "httpStatus": 200,
-      "finalUrl": "https://transcriptapi.com/docs/"
     }
   ]
 }

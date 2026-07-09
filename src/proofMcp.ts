@@ -78,7 +78,7 @@ async function createProof(): Promise<RedactedProof> {
 
     const client = await createMCPClient({
       transport: {
-        type: "sse",
+        type: "http",
         url: mcpUrl,
         headers: session?.mcp?.headers ?? {}
       }

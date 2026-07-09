@@ -1,12 +1,21 @@
 {
-  "generatedAt": "2026-07-09T09:14:09.999Z",
-  "status": "failed",
+  "generatedAt": "2026-07-09T10:28:18.897Z",
+  "status": "created",
   "docs": [
     "https://docs.composio.dev/docs/sessions-via-mcp",
     "https://docs.composio.dev/docs/extending-sessions/custom-tools-and-toolkits",
     "https://docs.composio.dev/toolkits",
     "https://docs.composio.dev/docs/cli"
   ],
-  "error": "401 {\"error\":{\"message\":\"Invalid API key: [redacted Composio API key]\",\"code\":10401,\"slug\":\"HTTP_Unauthorized\",\"status\":401,\"request_id\":\"26fe70ee-3376-40e9-9edf-7184e6c277fc\",\"suggested_fix\":\"Please check you are using a valid API key.\"}}",
-  "note": "The proof script failed in this environment. The failure is recorded so the submission stays honest and debuggable."
+  "mcpUrlHost": "backend.composio.dev",
+  "toolCount": 6,
+  "sampleTools": [
+    "COMPOSIO_MANAGE_CONNECTIONS",
+    "COMPOSIO_MULTI_EXECUTE_TOOL",
+    "COMPOSIO_REMOTE_BASH_TOOL",
+    "COMPOSIO_REMOTE_WORKBENCH",
+    "COMPOSIO_SEARCH_TOOLS",
+    "COMPOSIO_GET_TOOL_SCHEMAS"
+  ],
+  "note": "Created a Composio session with MCP enabled and listed tools through an MCP client. Secret-bearing URL and headers were redacted."
 }

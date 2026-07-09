@@ -63,13 +63,14 @@ async function checkUrl(app: string, url: string): Promise<UrlCheck> {
 }
 
 async function runPool<T, R>(items: T[], concurrency: number, worker: (item: T) => Promise<R>) {
-  const results: R[] = [];
+  const results: R[] = new Array(items.length);
   let index = 0;
 
   async function next() {
     while (index < items.length) {
-      const current = items[index++];
-      results.push(await worker(current));
+      const currentIndex = index++;
+      const current = items[currentIndex];
+      results[currentIndex] = await worker(current);
     }
   }
 
