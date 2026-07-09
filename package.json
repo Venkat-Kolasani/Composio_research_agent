@@ -14,8 +14,8 @@
     "all": "npm run parse && npm run research && npm run verify && npm run build:site"
   },
   "dependencies": {
-    "@ai-sdk/mcp": "^1.0.0",
-    "@composio/core": "^0.5.48",
+    "@ai-sdk/mcp": "^2.0.9",
+    "@composio/core": "^0.13.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "zod": "^3.25.76"
